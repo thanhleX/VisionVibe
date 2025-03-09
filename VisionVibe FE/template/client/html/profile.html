@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - VisionVibe</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="homepage.html">
+                    <h1 class="h4 mb-0">VisionVibe</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="homepage.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="product-list.html">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="promotion.html">Promotions</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center">
+                        <a href="cart.html" class="btn btn-link">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                        <a href="profile.html" class="btn btn-link active">
+                            <i class="fas fa-user"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container py-5 mt-5">
+        <div class="row g-4">
+            <!-- Sidebar -->
+            <div class="col-lg-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="profile-avatar mx-auto mb-3">
+                            <img src="../images/default-avatar.jpg" alt="User Avatar" class="rounded-circle img-fluid" style="width: 120px; height: 120px; object-fit: cover;">
+                        </div>
+                        <p class="h6 mb-1">@johndoe</p>
+                        <p class="text-muted small">Member since 2024</p>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <a href="#user-info" class="list-group-item list-group-item-action active" data-bs-toggle="list">
+                            <i class="fas fa-user me-2"></i> User Information
+                        </a>
+                        <a href="#orders" class="list-group-item list-group-item-action" data-bs-toggle="list">
+                            <i class="fas fa-shopping-bag me-2"></i> Order History
+                        </a>
+                        <a href="#addresses" class="list-group-item list-group-item-action" data-bs-toggle="list">
+                            <i class="fas fa-map-marker-alt me-2"></i> Saved Addresses
+                        </a>
+                        <a href="#password" class="list-group-item list-group-item-action" data-bs-toggle="list">
+                            <i class="fas fa-key me-2"></i> Change Password
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <div class="tab-content">
+                    <!-- User Information -->
+                    <div class="tab-pane fade show active" id="user-info">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h2 class="h5 mb-0">User Information</h2>
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="fas fa-edit me-2"></i>Edit Profile
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="firstname" class="form-label">First Name</label>
+                                            <input type="text" class="form-control" id="firstname" value="John">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="lastname" class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" id="lastname" value="Doe">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email Address</label>
+                                        <input type="email" class="form-control" id="email" value="john.doe@example.com">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="phone" class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="phone" value="(123) 456-7890">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="address" class="form-label">Default Address</label>
+                                        <textarea class="form-control" id="address" rows="3">123 Vision Street, Eyewear City, EC 12345, United States</textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Order History -->
+                    <div class="tab-pane fade" id="orders">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="h5 mb-0">Order History</h2>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover align-middle">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Price</th>
+                                                <th>Purchase Date</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center gap-3">
+                                                        <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80" 
+                                                             alt="Designer Sunglasses" 
+                                                             class="rounded" 
+                                                             style="width: 60px; height: 60px; object-fit: cover;">
+                                                        <div>
+                                                            <h6 class="mb-0">Designer Aviator Sunglasses</h6>
+                                                            <small class="text-muted">Color: Gold | Lens: Brown</small>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>$199.99</td>
+                                                <td>Jan 15, 2024</td>
+                                                <td>
+                                                    <button class="btn btn-primary btn-sm" onclick="window.location.href='checkout.html?product=designer-aviator-sunglasses&price=199.99'">
+                                                        <i class="fas fa-shopping-cart me-2"></i>Buy Again
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center gap-3">
+                                                        <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80" 
+                                                             alt="Reading Glasses" 
+                                                             class="rounded" 
+                                                             style="width: 60px; height: 60px; object-fit: cover;">
+                                                        <div>
+                                                            <h6 class="mb-0">Modern Reading Glasses</h6>
+                                                            <small class="text-muted">Color: Black | Frame: Metal</small>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>$149.99</td>
+                                                <td>Jan 10, 2024</td>
+                                                <td>
+                                                    <button class="btn btn-primary btn-sm" onclick="window.location.href='checkout.html?product=modern-reading-glasses&price=149.99'">
+                                                        <i class="fas fa-shopping-cart me-2"></i>Buy Again
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Saved Addresses -->
+                    <div class="tab-pane fade" id="addresses">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h2 class="h5 mb-0">Saved Addresses</h2>
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="fas fa-plus me-2"></i>Add New Address
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <div class="card h-100 border shadow-sm">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                                    <div>
+                                                        <h6 class="card-title mb-1">Home</h6>
+                                                        <p class="text-muted small mb-0">Default Address</p>
+                                                    </div>
+                                                    <span class="badge bg-primary">Default</span>
+                                                </div>
+                                                <p class="card-text mb-3">
+                                                    John Doe<br>
+                                                    123 Vision Street<br>
+                                                    Eyewear City, EC 12345<br>
+                                                    United States<br>
+                                                    (123) 456-7890
+                                                </p>
+                                                <div class="d-flex gap-2">
+                                                    <button class="btn btn-outline-primary btn-sm">Edit</button>
+                                                    <button class="btn btn-outline-danger btn-sm">Delete</button>
+                                                    <button class="btn btn-outline-secondary btn-sm">Set as Default</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card h-100 border shadow-sm">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-start mb-3">
+                                                    <div>
+                                                        <h6 class="card-title mb-1">Office</h6>
+                                                        <p class="text-muted small mb-0">Secondary Address</p>
+                                                    </div>
+                                                </div>
+                                                <p class="card-text mb-3">
+                                                    John Doe<br>
+                                                    456 Business Ave<br>
+                                                    Suite 789<br>
+                                                    New York, NY 10001<br>
+                                                    (987) 654-3210
+                                                </p>
+                                                <div class="d-flex gap-2">
+                                                    <button class="btn btn-outline-primary btn-sm">Edit</button>
+                                                    <button class="btn btn-outline-danger btn-sm">Delete</button>
+                                                    <button class="btn btn-outline-secondary btn-sm">Set as Default</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Change Password -->
+                    <div class="tab-pane fade" id="password">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2 class="h5 mb-0">Change Password</h2>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="current-password" class="form-label">Current Password</label>
+                                        <input type="password" class="form-control" id="current-password">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="new-password" class="form-label">New Password</label>
+                                        <input type="password" class="form-control" id="new-password">
+                                        <div class="form-text">Password must be at least 8 characters long and include numbers and special characters.</div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="confirm-password" class="form-label">Confirm New Password</label>
+                                        <input type="password" class="form-control" id="confirm-password">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Update Password</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white py-5 mt-auto">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-4">
+                    <h3 class="h5 mb-3">Contact Us</h3>
+                    <p class="mb-1">Email: info@visionvibe.com</p>
+                    <p>Phone: (123) 456-7890</p>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="h5 mb-3">Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="about.html" class="text-white text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Contact</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="h5 mb-3">Follow Us</h3>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white fs-5"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <p class="text-center mb-0">&copy; 2024 VisionVibe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Function to handle Buy Again button clicks
+        function buyAgain(productId, price) {
+            // You can add additional logic here if needed
+            window.location.href = `checkout.html?product=${productId}&price=${price}`;
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionVibe - Premium Eyewear</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="homepage.html">
+                    <h1 class="h4 mb-0">VisionVibe</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="homepage.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="product-list.html">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="promotion.html">Promotions</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center">
+                        <a href="cart.html" class="btn btn-link">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                        <a href="login.html" class="btn btn-link">
+                            <i class="fas fa-user"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section vh-100 position-relative mb-5">
+        <img src="https://images.unsplash.com/photo-1633620238401-4d96c67da4fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Hero Image" class="w-100 h-100 object-fit-cover">
+        <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
+            <h1 class="display-3 fw-bold mb-4">See the World in Style</h1>
+            <p class="lead mb-4 px-4">Experience luxury eyewear that combines fashion with function</p>
+            <a href="product-list.html" class="btn btn-light btn-lg px-5 py-3">Explore Collection</a>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products py-5 mb-5">
+        <div class="container position-relative">
+            <h2 class="h3 mb-4 text-center">Featured Products</h2>
+            <div id="featuredProductsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-3">
+                                <a href="product-detail.html?id=1" class="text-decoration-none">
+                                    <div class="card h-100 border-0 shadow-sm transition-hover">
+                                        <div class="position-relative">
+                                            <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80" class="card-img-top object-fit-cover" style="height: 200px;" alt="Designer Aviator Sunglasses">
+                                            <div class="position-absolute top-0 end-0 p-2">
+                                                <span class="badge bg-danger">20% OFF</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-body d-flex flex-column">
+                                            <h3 class="h6 mb-2 text-dark">Designer Aviator Sunglasses</h3>
+                                            <div class="mt-auto">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <div>
+                                                        <span class="text-primary fw-bold">$199.99</span>
+                                                        <span class="text-muted text-decoration-line-through ms-2 small">$249.99</span>
+                                                    </div>
+                                                    <button class="btn btn-outline-primary btn-sm opacity-75 hover-opacity-100" onclick="event.preventDefault()">
+                                                        <i class="fas fa-shopping-cart"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="product-detail.html?id=2" class="text-decoration-none">
+                                    <div class="card h-100 border-0 shadow-sm transition-hover">
+                                        <div class="position-relative">
+                                            <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80" class="card-img-top object-fit-cover" style="height: 200px;" alt="Modern Reading Glasses">
+                                            <div class="position-absolute top-0 end-0 p-2">
+                                                <span class="badge bg-danger">15% OFF</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-body d-flex flex-column">
+                                            <h3 class="h6 mb-2 text-dark">Modern Reading Glasses</h3>
+                                            <div class="mt-auto">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <div>
+                                                        <span class="text-primary fw-bold">$149.99</span>
+                                                        <span class="text-muted text-decoration-line-through ms-2 small">$179.99</span>
+                                                    </div>
+                                                    <button class="btn btn-outline-primary btn-sm opacity-75 hover-opacity-100" onclick="event.preventDefault()">
+                                                        <i class="fas fa-shopping-cart"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="product-detail.html?id=3" class="text-decoration-none">
+                                    <div class="card h-100 border-0 shadow-sm transition-hover">
+                                        <div class="position-relative">
+                                            <img src="https://images.unsplash.com/photo-1509695507497-903c140c43b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80" class="card-img-top object-fit-cover" style="height: 200px;" alt="Classic Wayfarers">
+                                            <div class="position-absolute top-0 end-0 p-2">
+                                                <span class="badge bg-danger">10% OFF</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-body d-flex flex-column">
+                                            <h3 class="h6 mb-2 text-dark">Classic Wayfarers</h3>
+                                            <div class="mt-auto">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <div>
+                                                        <span class="text-primary fw-bold">$179.99</span>
+                                                        <span class="text-muted text-decoration-line-through ms-2 small">$199.99</span>
+                                                    </div>
+                                                    <button class="btn btn-outline-primary btn-sm opacity-75 hover-opacity-100" onclick="event.preventDefault()">
+                                                        <i class="fas fa-shopping-cart"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="product-detail.html?id=4" class="text-decoration-none">
+                                    <div class="card h-100 border-0 shadow-sm transition-hover">
+                                        <div class="position-relative">
+                                            <img src="https://images.unsplash.com/photo-1546180245-c59500ad14d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80" class="card-img-top object-fit-cover" style="height: 200px;" alt="Sport Sunglasses">
+                                            <div class="position-absolute top-0 end-0 p-2">
+                                                <span class="badge bg-danger">20% OFF</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-body d-flex flex-column">
+                                            <h3 class="h6 mb-2 text-dark">Sport Sunglasses</h3>
+                                            <div class="mt-auto">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <div>
+                                                        <span class="text-primary fw-bold">$159.99</span>
+                                                        <span class="text-muted text-decoration-line-through ms-2 small">$199.99</span>
+                                                    </div>
+                                                    <button class="btn btn-outline-primary btn-sm opacity-75 hover-opacity-100" onclick="event.preventDefault()">
+                                                        <i class="fas fa-shopping-cart"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-3">
+                                <a href="product-detail.html?id=1" class="text-decoration-none">
+                                    <div class="card h-100 border-0 shadow-sm transition-hover">
+                                        <div class="position-relative">
+                                            <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80" class="card-img-top object-fit-cover" style="height: 200px;" alt="Designer Aviator Sunglasses">
+                                            <div class="position-absolute top-0 end-0 p-2">
+                                                <span class="badge bg-danger">20% OFF</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-body d-flex flex-column">
+                                            <h3 class="h6 mb-2 text-dark">Designer Aviator Sunglasses</h3>
+                                            <div class="mt-auto">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <div>
+                                                        <span class="text-primary fw-bold">$199.99</span>
+                                                        <span class="text-muted text-decoration-line-through ms-2 small">$249.99</span>
+                                                    </div>
+                                                    <button class="btn btn-outline-primary btn-sm opacity-75 hover-opacity-100" onclick="event.preventDefault()">
+                                                        <i class="fas fa-shopping-cart"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="product-detail.html?id=2" class="text-decoration-none">
+                                    <div class="card h-100 border-0 shadow-sm transition-hover">
+                                        <div class="position-relative">
+                                            <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80" class="card-img-top object-fit-cover" style="height: 200px;" alt="Modern Reading Glasses">
+                                            <div class="position-absolute top-0 end-0 p-2">
+                                                <span class="badge bg-danger">15% OFF</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-body d-flex flex-column">
+                                            <h3 class="h6 mb-2 text-dark">Modern Reading Glasses</h3>
+                                            <div class="mt-auto">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <div>
+                                                        <span class="text-primary fw-bold">$149.99</span>
+                                                        <span class="text-muted text-decoration-line-through ms-2 small">$179.99</span>
+                                                    </div>
+                                                    <button class="btn btn-outline-primary btn-sm opacity-75 hover-opacity-100" onclick="event.preventDefault()">
+                                                        <i class="fas fa-shopping-cart"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="product-detail.html?id=3" class="text-decoration-none">
+                                    <div class="card h-100 border-0 shadow-sm transition-hover">
+                                        <div class="position-relative">
+                                            <img src="https://images.unsplash.com/photo-1509695507497-903c140c43b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80" class="card-img-top object-fit-cover" style="height: 200px;" alt="Classic Wayfarers">
+                                            <div class="position-absolute top-0 end-0 p-2">
+                                                <span class="badge bg-danger">10% OFF</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-body d-flex flex-column">
+                                            <h3 class="h6 mb-2 text-dark">Classic Wayfarers</h3>
+                                            <div class="mt-auto">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <div>
+                                                        <span class="text-primary fw-bold">$179.99</span>
+                                                        <span class="text-muted text-decoration-line-through ms-2 small">$199.99</span>
+                                                    </div>
+                                                    <button class="btn btn-outline-primary btn-sm opacity-75 hover-opacity-100" onclick="event.preventDefault()">
+                                                        <i class="fas fa-shopping-cart"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="product-detail.html?id=4" class="text-decoration-none">
+                                    <div class="card h-100 border-0 shadow-sm transition-hover">
+                                        <div class="position-relative">
+                                            <img src="https://images.unsplash.com/photo-1546180245-c59500ad14d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80" class="card-img-top object-fit-cover" style="height: 200px;" alt="Sport Sunglasses">
+                                            <div class="position-absolute top-0 end-0 p-2">
+                                                <span class="badge bg-danger">20% OFF</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-body d-flex flex-column">
+                                            <h3 class="h6 mb-2 text-dark">Sport Sunglasses</h3>
+                                            <div class="mt-auto">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <div>
+                                                        <span class="text-primary fw-bold">$159.99</span>
+                                                        <span class="text-muted text-decoration-line-through ms-2 small">$199.99</span>
+                                                    </div>
+                                                    <button class="btn btn-outline-primary btn-sm opacity-75 hover-opacity-100" onclick="event.preventDefault()">
+                                                        <i class="fas fa-shopping-cart"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev custom-carousel-control" type="button" data-bs-target="#featuredProductsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next custom-carousel-control" type="button" data-bs-target="#featuredProductsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories py-5 bg-light">
+        <div class="container">
+            <h2 class="h3 mb-4 text-center">Shop by Category</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4">
+                    <div class="card h-100 category-card overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1546180245-c59500ad14d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" class="card-img" alt="Sunglasses">
+                        <div class="card-img-overlay d-flex align-items-center justify-content-center">
+                            <div class="text-white text-center">
+                                <h3 class="h4 mb-3">Sunglasses</h3>
+                                <a href="product-list.html?category=sunglasses" class="btn btn-outline-light">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 category-card overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" class="card-img" alt="Eyeglasses">
+                        <div class="card-img-overlay d-flex align-items-center justify-content-center">
+                            <div class="text-white text-center">
+                                <h3 class="h4 mb-3">Eyeglasses</h3>
+                                <a href="product-list.html?category=eyeglasses" class="btn btn-outline-light">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 category-card overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" class="card-img" alt="Accessories">
+                        <div class="card-img-overlay d-flex align-items-center justify-content-center">
+                            <div class="text-white text-center">
+                                <h3 class="h4 mb-3">Accessories</h3>
+                                <a href="product-list.html?category=accessories" class="btn btn-outline-light">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5 mt-auto">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-4">
+                    <h3 class="h5 mb-3">Contact Us</h3>
+                    <p class="mb-1">Email: info@visionvibe.com</p>
+                    <p>Phone: (123) 456-7890</p>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="h5 mb-3">Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="about.html" class="text-white text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Contact</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="h5 mb-3">Follow Us</h3>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white fs-5"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <p class="text-center mb-0">&copy; 2024 VisionVibe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+    .transition-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .transition-hover:hover {
+        transform: translateY(-5px);
+    }
+
+    .hover-opacity-100:hover {
+        opacity: 1 !important;
+    }
+
+    /* Custom Carousel Controls - keeping these since Bootstrap doesn't have equivalent classes */
+    .custom-carousel-control {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .carousel-control-prev {
+        left: -50px;
+    }
+
+    .carousel-control-next {
+        right: -50px;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 40px;
+        height: 40px;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+    }
+
+    @media (max-width: 1200px) {
+        .carousel-control-prev {
+            left: -20px;
+        }
+        .carousel-control-next {
+            right: -20px;
+        }
+    }
+    </style>
+</body>
+</html>
+

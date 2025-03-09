@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionVibe Admin - Chi tiết khuyến mãi</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h2>VisionVibe</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                    <li><a href="products.html"><i class="fas fa-glasses"></i> Quản lý sản phẩm</a></li>
+                    <li><a href="users.html"><i class="fas fa-users"></i> Quản lý người dùng</a></li>
+                    <li><a href="orders.html"><i class="fas fa-shopping-cart"></i> Quản lý đơn hàng</a></li>
+                    <li class="active"><a href="promotions.html"><i class="fas fa-percent"></i> Khuyến mãi</a></li>
+                    <li><a href="notifications.html"><i class="fas fa-bell"></i> Thông báo</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <div class="header-content">
+                    <div class="header-left">
+                        <h1>Chi tiết khuyến mãi #<span id="promotionId">KM001</span></h1>
+                    </div>
+                    <div class="user-info">
+                        <span>admin@visionvibe.com</span>
+                        <button class="btn-logout" onclick="handleLogout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Đăng xuất
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="breadcrumb">
+                <a href="index.html">Dashboard</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="promotions.html">Quản lý khuyến mãi</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Chi tiết khuyến mãi #<span id="breadcrumbPromotionId">KM001</span></span>
+            </div>
+
+            <!-- Promotion Details -->
+            <div class="form-container">
+                <div class="form-section">
+                    <h3>Thông tin khuyến mãi</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Tên khuyến mãi:</label>
+                            <input type="text" value="Mừng xuân 2024" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Giá trị khuyến mãi:</label>
+                            <input type="text" value="20%" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Thời gian bắt đầu:</label>
+                            <input type="text" value="01/03/2024 00:00" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Thời gian kết thúc:</label>
+                            <input type="text" value="15/03/2024 23:59" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Danh sách sản phẩm áp dụng</h3>
+                    <div class="product-list">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Danh mục</th>
+                                    <th>Thương hiệu</th>
+                                    <th>Giá gốc</th>
+                                    <th>Giá sau giảm</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#P001</td>
+                                    <td>Aviator Classic</td>
+                                    <td>Kính mát</td>
+                                    <td>Ray-Ban</td>
+                                    <td>2.500.000 VND</td>
+                                    <td>2.000.000 VND</td>
+                                </tr>
+                                <tr>
+                                    <td>#P002</td>
+                                    <td>Holbrook</td>
+                                    <td>Kính thể thao</td>
+                                    <td>Oakley</td>
+                                    <td>1.800.000 VND</td>
+                                    <td>1.440.000 VND</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="window.location.href='promotions.html'">Quay lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get promotion ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const promotionId = urlParams.get('id') || 'KM001';
+        
+        // Update promotion ID in the page
+        document.getElementById('promotionId').textContent = promotionId;
+        document.getElementById('breadcrumbPromotionId').textContent = promotionId;
+
+        function handleLogout() {
+            // Add logout logic here
+            window.location.href = '../login.html';
+        }
+    </script>
+</body>
+</html> 

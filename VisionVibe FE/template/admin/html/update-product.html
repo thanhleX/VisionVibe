@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionVibe Admin - Cập nhật sản phẩm</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h2>VisionVibe</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                    <li class="active"><a href="products.html"><i class="fas fa-glasses"></i> Quản lý sản phẩm</a></li>
+                    <li><a href="users.html"><i class="fas fa-users"></i> Quản lý người dùng</a></li>
+                    <li><a href="orders.html"><i class="fas fa-shopping-cart"></i> Quản lý đơn hàng</a></li>
+                    <li><a href="promotions.html"><i class="fas fa-percent"></i> Khuyến mãi</a></li>
+                    <li><a href="notifications.html"><i class="fas fa-bell"></i> Thông báo</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <div class="header-content">
+                    <div class="header-left">
+                        <h1>Cập nhật sản phẩm #<span id="productId">P001</span></h1>
+                    </div>
+                    <div class="user-info">
+                        <span>admin@visionvibe.com</span>
+                        <button class="btn-logout" onclick="handleLogout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Đăng xuất
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="breadcrumb">
+                <a href="index.html">Dashboard</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="products.html">Quản lý sản phẩm</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Cập nhật sản phẩm #<span id="breadcrumbProductId">P001</span></span>
+            </div>
+
+            <!-- Product Update Form -->
+            <div class="form-container">
+                <form id="updateProductForm">
+                    <div class="form-section">
+                        <h3>Thông tin cơ bản</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Tên sản phẩm:</label>
+                                <input type="text" value="Aviator Classic" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Danh mục:</label>
+                                <select required>
+                                    <option value="sunglasses">Kính mát</option>
+                                    <option value="sports">Kính thể thao</option>
+                                    <option value="prescription">Kính cận</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Thương hiệu:</label>
+                                <select required>
+                                    <option value="ray-ban">Ray-Ban</option>
+                                    <option value="oakley">Oakley</option>
+                                    <option value="gucci">Gucci</option>
+                                    <option value="prada">Prada</option>
+                                    <option value="burberry">Burberry</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Giá bán:</label>
+                                <input type="number" value="2500000" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Số lượng:</label>
+                                <input type="number" value="15" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Thông tin chi tiết</h3>
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label>Màu tròng:</label>
+                                <select required>
+                                    <option value="black">Đen</option>
+                                    <option value="brown">Nâu</option>
+                                    <option value="gray">Xám</option>
+                                    <option value="green">Xanh lá</option>
+                                    <option value="blue">Xanh dương</option>
+                                    <option value="mirror">Gương</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Màu gọng:</label>
+                                <select required>
+                                    <option value="gold">Vàng</option>
+                                    <option value="black">Đen</option>
+                                    <option value="silver">Bạc</option>
+                                    <option value="tortoise">Rùa</option>
+                                    <option value="brown">Nâu</option>
+                                    <option value="red">Đỏ</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Chất liệu tròng:</label>
+                                <select required>
+                                    <option value="glass">Kính</option>
+                                    <option value="polycarbonate">Polycarbonate</option>
+                                    <option value="trivex">Trivex</option>
+                                    <option value="high-index">High Index</option>
+                                    <option value="photochromic">Photochromic</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Chất liệu gọng:</label>
+                                <select required>
+                                    <option value="metal">Kim loại</option>
+                                    <option value="acetate">Acetate</option>
+                                    <option value="plastic">Nhựa</option>
+                                    <option value="titanium">Titanium</option>
+                                    <option value="stainless-steel">Thép không gỉ</option>
+                                    <option value="wood">Gỗ</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Mô tả sản phẩm</h3>
+                        <div class="form-group">
+                            <textarea rows="5"
+                                required>Kính mát Ray-Ban Aviator Classic là biểu tượng của phong cách và sự sang trọng. Với khung kính mỏng và thanh lịch, kính mát này mang đến vẻ đẹp cổ điển nhưng vẫn rất hiện đại. Thấu kính chất lượng cao giúp bảo vệ mắt khỏi tia UV và chống chói hiệu quả.</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Hình ảnh sản phẩm</h3>
+                        <div class="image-upload">
+                            <div class="current-images">
+                                <div class="image-preview">
+                                    <img src="../images/products/aviator-1.jpg" alt="Product Image 1">
+                                    <button type="button" class="remove-image"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="image-preview">
+                                    <img src="../images/products/aviator-2.jpg" alt="Product Image 2">
+                                    <button type="button" class="remove-image"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="upload-box">
+                                <input type="file" id="productImages" multiple accept="image/*">
+                                <label for="productImages">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Thêm hình ảnh</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary"
+                            onclick="window.location.href='products.html'">Hủy</button>
+                        <button type="submit" class="btn-primary">Cập nhật sản phẩm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get product ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id') || 'P001';
+
+        // Update product ID in the page
+        document.getElementById('productId').textContent = productId;
+        document.getElementById('breadcrumbProductId').textContent = productId;
+
+        // Handle form submission
+        document.getElementById('updateProductForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            // Add update logic here
+            alert('Cập nhật sản phẩm thành công!');
+            window.location.href = 'products.html';
+        });
+
+        // Handle image upload preview
+        document.getElementById('productImages').addEventListener('change', function (e) {
+            const files = e.target.files;
+            const previewContainer = document.querySelector('.current-images');
+
+            for (let file of files) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const preview = document.createElement('div');
+                    preview.className = 'image-preview';
+                    preview.innerHTML = `
+                        <img src="${e.target.result}" alt="Product Image">
+                        <button type="button" class="remove-image"><i class="fas fa-times"></i></button>
+                    `;
+                    previewContainer.appendChild(preview);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Handle image removal
+        document.addEventListener('click', function (e) {
+            if (e.target.closest('.remove-image')) {
+                e.target.closest('.image-preview').remove();
+            }
+        });
+
+        function handleLogout() {
+            // Add logout logic here
+            window.location.href = '../login.html';
+        }
+    </script>
+</body>
+
+</html>

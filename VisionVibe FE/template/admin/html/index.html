@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionVibe Admin - Dashboard</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h2>VisionVibe</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="index.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                    <li><a href="products.html"><i class="fas fa-glasses"></i> Quản lý sản phẩm</a></li>
+                    <li><a href="users.html"><i class="fas fa-users"></i> Quản lý người dùng</a></li>
+                    <li><a href="orders.html"><i class="fas fa-shopping-cart"></i> Quản lý đơn hàng</a></li>
+                    <li><a href="promotions.html"><i class="fas fa-percent"></i> Khuyến mãi</a></li>
+                    <li><a href="notifications.html"><i class="fas fa-bell"></i> Thông báo</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <div class="header-content">
+                    <div class="header-left">
+                        <h1>Dashboard</h1>
+                    </div>
+                    <div class="user-info">
+                        <span>admin@visionvibe.com</span>
+                        <button class="btn-logout" onclick="handleLogout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Đăng xuất
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="breadcrumb">
+                <span>Dashboard</span>
+            </div>
+
+            <!-- Revenue Chart Section -->
+            <div class="chart-container">
+                <div class="chart-controls">
+                    <select id="timeRange">
+                        <option value="week">Theo tuần</option>
+                        <option value="month">Theo tháng</option>
+                    </select>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/revenue-chart.js"></script>
+</body>
+
+</html>

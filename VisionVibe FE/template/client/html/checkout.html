@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - VisionVibe</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="homepage.html">
+                    <h1 class="h4 mb-0">VisionVibe</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="homepage.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="product-list.html">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="promotion.html">Promotions</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center">
+                        <a href="cart.html" class="btn btn-link">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                        <a href="login.html" class="btn btn-link">
+                            <i class="fas fa-user"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container py-5 mt-5">
+        <h1 class="h2 mb-4">Checkout</h1>
+
+        <div class="row g-4">
+            <!-- Checkout Form -->
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h2 class="h5 mb-0">Thông tin giao hàng</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="deliveryForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="fullName" class="form-label">Họ và tên</label>
+                                    <input type="text" class="form-control" id="fullName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label">Số điện thoại</label>
+                                    <input type="tel" class="form-control" id="phone" pattern="[0-9]{10}"
+                                        title="Vui lòng nhập số điện thoại 10 chữ số" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="address" class="form-label">Địa chỉ</label>
+                                    <textarea class="form-control" id="address" rows="3" required></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="h5 mb-0">Phương thức thanh toán</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="paymentForm">
+                            <div class="mb-4">
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="cod" checked>
+                                    <label class="form-check-label" for="cod">
+                                        <i class="fas fa-money-bill-wave me-2"></i>Thanh toán khi nhận hàng (COD)
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="radio" name="paymentMethod" id="banking">
+                                    <label class="form-check-label" for="banking">
+                                        <i class="fas fa-university me-2"></i>Chuyển khoản ngân hàng
+                                    </label>
+                                </div>
+                                <div id="bankingDetails" class="mt-3 d-none">
+                                    <div class="alert alert-info">
+                                        <p class="mb-1"><strong>Thông tin chuyển khoản:</strong></p>
+                                        <p class="mb-1">Ngân hàng: VietComBank</p>
+                                        <p class="mb-1">Số tài khoản: 1234567890</p>
+                                        <p class="mb-0">Chủ tài khoản: VISION VIBE</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="h5 mb-0">Order Summary</h2>
+                    </div>
+                    <div class="card-body">
+                        <!-- Order Items -->
+                        <div class="mb-3">
+                            <div class="d-flex gap-3 mb-3">
+                                <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200&q=80"
+                                    alt="Designer Sunglasses" class="rounded"
+                                    style="width: 80px; height: 80px; object-fit: cover;">
+                                <div>
+                                    <h3 class="h6 mb-1">Designer Aviator Sunglasses</h3>
+                                    <p class="text-muted small mb-1">Color: Gold | Lens: Brown</p>
+                                    <p class="mb-0">$199.99 x 1</p>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-3">
+                                <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&h=200&q=80"
+                                    alt="Reading Glasses" class="rounded"
+                                    style="width: 80px; height: 80px; object-fit: cover;">
+                                <div>
+                                    <h3 class="h6 mb-1">Modern Reading Glasses</h3>
+                                    <p class="text-muted small mb-1">Color: Black | Lens: Clear</p>
+                                    <p class="mb-0">$149.99 x 1</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <!-- Order Total -->
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Subtotal</span>
+                            <span>$349.98</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Shipping</span>
+                            <span>$9.99</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Tax</span>
+                            <span>$35.00</span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between mb-4">
+                            <span class="h5 mb-0">Total</span>
+                            <span class="h5 mb-0">$394.97</span>
+                        </div>
+
+                        <button type="button" id="placeOrderBtn" class="btn btn-primary w-100">Đặt hàng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5 mt-auto">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-4">
+                    <h3 class="h5 mb-3">Contact Us</h3>
+                    <p class="mb-1">Email: info@visionvibe.com</p>
+                    <p>Phone: (123) 456-7890</p>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="h5 mb-3">Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="about.html" class="text-white text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Contact</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="h5 mb-3">Follow Us</h3>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="text-white fs-5"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white fs-5"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <p class="text-center mb-0">&copy; 2024 VisionVibe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Show/hide banking details
+            const bankingRadio = document.getElementById('banking');
+            const bankingDetails = document.getElementById('bankingDetails');
+
+            bankingRadio.addEventListener('change', function () {
+                bankingDetails.classList.remove('d-none');
+            });
+
+            document.getElementById('cod').addEventListener('change', function () {
+                bankingDetails.classList.add('d-none');
+            });
+
+            // City-District dependent dropdown
+            const citySelect = document.getElementById('city');
+            const districtSelect = document.getElementById('district');
+
+            citySelect.addEventListener('change', function () {
+                // Clear current districts
+                districtSelect.innerHTML = '<option value="">Chọn quận/huyện</option>';
+
+                // Add districts based on selected city
+                if (this.value === 'Hà Nội') {
+                    addDistricts(['Ba Đình', 'Hoàn Kiếm', 'Hai Bà Trưng', 'Đống Đa']);
+                } else if (this.value === 'TP. Hồ Chí Minh') {
+                    addDistricts(['Quận 1', 'Quận 2', 'Quận 3', 'Bình Thạnh']);
+                }
+                // Add more cities as needed
+            });
+
+            function addDistricts(districts) {
+                districts.forEach(district => {
+                    const option = new Option(district, district);
+                    districtSelect.add(option);
+                });
+            }
+
+            // Form validation and submission
+            const placeOrderBtn = document.getElementById('placeOrderBtn');
+            const deliveryForm = document.getElementById('deliveryForm');
+            const paymentForm = document.getElementById('paymentForm');
+
+            placeOrderBtn.addEventListener('click', function () {
+                if (deliveryForm.checkValidity() && paymentForm.checkValidity()) {
+                    // Collect form data
+                    const formData = {
+                        fullName: document.getElementById('fullName').value,
+                        phone: document.getElementById('phone').value,
+                        email: document.getElementById('email').value,
+                        address: document.getElementById('address').value,
+                        city: citySelect.value,
+                        district: districtSelect.value,
+                        paymentMethod: document.querySelector('input[name="paymentMethod"]:checked').id
+                    };
+
+                    // Handle order submission
+                    console.log('Order data:', formData);
+                    alert('Đặt hàng thành công! Chúng tôi sẽ liên hệ với bạn sớm.');
+                    // Redirect to confirmation page or homepage
+                    window.location.href = 'homepage.html';
+                } else {
+                    deliveryForm.reportValidity();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

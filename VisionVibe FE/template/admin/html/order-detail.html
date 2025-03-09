@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionVibe Admin - Chi tiết đơn hàng</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h2>VisionVibe</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                    <li><a href="products.html"><i class="fas fa-glasses"></i> Quản lý sản phẩm</a></li>
+                    <li><a href="users.html"><i class="fas fa-users"></i> Quản lý người dùng</a></li>
+                    <li class="active"><a href="orders.html"><i class="fas fa-shopping-cart"></i> Quản lý đơn hàng</a></li>
+                    <li><a href="promotions.html"><i class="fas fa-percent"></i> Khuyến mãi</a></li>
+                    <li><a href="notifications.html"><i class="fas fa-bell"></i> Thông báo</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <div class="header-content">
+                    <div class="header-left">
+                        <h1>Chi tiết đơn hàng #<span id="orderNumber">ORD001</span></h1>
+                    </div>
+                    <div class="user-info">
+                        <span>admin@visionvibe.com</span>
+                        <button class="btn-logout" onclick="handleLogout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Đăng xuất
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="breadcrumb">
+                <a href="index.html">Dashboard</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="orders.html">Quản lý đơn hàng</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Chi tiết đơn hàng #<span id="breadcrumbOrderNumber">ORD001</span></span>
+            </div>
+
+            <!-- Order Details Content -->
+            <div class="order-detail-container">
+                <!-- Order Status Section -->
+                <div class="order-status-section">
+                    <div class="status-info">
+                        <span class="status-badge status-pending">Chờ xác nhận</span>
+                        <p>Đặt hàng lúc: <span id="orderDate">05/03/2024 14:30</span></p>
+                    </div>
+                    <div class="status-actions">
+                        <select id="orderStatus" class="status-select">
+                            <option value="pending">Chờ xác nhận</option>
+                            <option value="confirmed">Xác nhận</option>
+                            <option value="processing">Đang xử lý</option>
+                            <option value="shipping">Đang giao hàng</option>
+                            <option value="completed">Hoàn thành</option>
+                            <option value="cancelled">Đã hủy</option>
+                        </select>
+                        <button class="btn-primary" onclick="updateOrderStatus()">Cập nhật trạng thái</button>
+                    </div>
+                </div>
+
+                <!-- Customer Information -->
+                <div class="detail-section">
+                    <h2>Thông tin khách hàng</h2>
+                    <div class="detail-grid">
+                        <div class="detail-group">
+                            <label>Họ tên:</label>
+                            <span id="customerName">Nguyễn Văn A</span>
+                        </div>
+                        <div class="detail-group">
+                            <label>Email:</label>
+                            <span id="customerEmail">nguyenvana@email.com</span>
+                        </div>
+                        <div class="detail-group">
+                            <label>Số điện thoại:</label>
+                            <span id="customerPhone">0123456789</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shipping Address -->
+                <div class="detail-section">
+                    <h2>Địa chỉ giao hàng</h2>
+                    <div class="detail-content">
+                        <p id="shippingAddress">123 Đường ABC, Phường XYZ, Quận 1, TP.HCM</p>
+                    </div>
+                </div>
+
+                <!-- Order Items -->
+                <div class="detail-section">
+                    <h2>Chi tiết sản phẩm</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Đơn giá</th>
+                                    <th>Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Kính mát Ray-Ban Aviator</td>
+                                    <td>2</td>
+                                    <td>2.500.000 VND</td>
+                                    <td>5.000.000 VND</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3" class="text-right"><strong>Tổng cộng:</strong></td>
+                                    <td><strong>5.000.000 VND</strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Order Notes -->
+                <div class="detail-section">
+                    <h2>Ghi chú đơn hàng</h2>
+                    <div class="detail-content">
+                        <p id="orderNotes">Giao hàng vào buổi chiều</p>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="detail-actions">
+                    <button class="btn-secondary" onclick="window.location.href='orders.html'">
+                        <i class="fas fa-arrow-left"></i> Quay lại
+                    </button>
+                    <button class="btn-primary" onclick="printOrder()">
+                        <i class="fas fa-print"></i> In đơn hàng
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get order ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderId = urlParams.get('id') || 'ORD001';
+
+        // Update order ID in the page
+        document.getElementById('orderNumber').textContent = orderId;
+        document.getElementById('breadcrumbOrderNumber').textContent = orderId;
+
+        function updateOrderStatus() {
+            const status = document.getElementById('orderStatus').value;
+            // Implement status update logic here
+            alert('Cập nhật trạng thái thành công!');
+        }
+
+        function printOrder() {
+            // Implement print logic here
+            window.print();
+        }
+
+        function handleLogout() {
+            // Add logout logic here
+            window.location.href = '../login.html';
+        }
+    </script>
+</body>
+</html> 

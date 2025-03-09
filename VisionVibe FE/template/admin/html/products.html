@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionVibe Admin - Quản lý sản phẩm</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h2>VisionVibe</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                    <li class="active"><a href="products.html"><i class="fas fa-glasses"></i> Quản lý sản phẩm</a></li>
+                    <li><a href="users.html"><i class="fas fa-users"></i> Quản lý người dùng</a></li>
+                    <li><a href="orders.html"><i class="fas fa-shopping-cart"></i> Quản lý đơn hàng</a></li>
+                    <li><a href="promotions.html"><i class="fas fa-percent"></i> Khuyến mãi</a></li>
+                    <li><a href="notifications.html"><i class="fas fa-bell"></i> Thông báo</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <div class="header-content">
+                    <div class="header-left">
+                        <h1>Quản lý sản phẩm</h1>
+                    </div>
+                    <div class="user-info">
+                        <span>admin@visionvibe.com</span>
+                        <button class="btn-logout" onclick="handleLogout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Đăng xuất
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="breadcrumb">
+                <a href="index.html">Dashboard</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Quản lý sản phẩm</span>
+            </div>
+
+            <!-- Management Tools -->
+            <div class="management-tools">
+                <div class="action-buttons">
+                    <button class="btn-primary" onclick="window.location.href='add-product.html'">
+                        <i class="fas fa-plus"></i> Thêm sản phẩm mới
+                    </button>
+                    <button class="btn-primary" onclick="window.location.href='add-category.html'">
+                        <i class="fas fa-folder-plus"></i> Thêm danh mục
+                    </button>
+                </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Tìm kiếm sản phẩm...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+
+            <!-- Category List -->
+            <div class="category-section">
+                <h3>Danh mục sản phẩm</h3>
+                <div class="category-list" id="categoryList">
+                    <!-- Categories will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Products Table -->
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Danh mục</th>
+                            <th>Thương hiệu</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#P001</td>
+                            <td>Aviator Classic</td>
+                            <td>Kính mát</td>
+                            <td>Ray-Ban</td>
+                            <td>2.500.000 VND</td>
+                            <td>15</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-edit" onclick="window.location.href='update-product.html?id=P001'">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#P002</td>
+                            <td>Holbrook</td>
+                            <td>Kính thể thao</td>
+                            <td>Oakley</td>
+                            <td>1.800.000 VND</td>
+                            <td>3</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-edit" onclick="window.location.href='update-product.html?id=P002'">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button><i class="fas fa-chevron-left"></i></button>
+                <button class="active">1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>4</button>
+                <button>5</button>
+                <button><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Category Modal -->
+    <div id="addCategoryModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Thêm danh mục mới</h2>
+            <form id="categoryForm">
+                <div class="form-group">
+                    <label>Tên danh mục:</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Mô tả:</label>
+                    <textarea></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal()">Hủy</button>
+                    <button type="submit" class="btn-primary">Thêm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showAddCategoryModal() {
+            document.getElementById('addCategoryModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('addCategoryModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html> 

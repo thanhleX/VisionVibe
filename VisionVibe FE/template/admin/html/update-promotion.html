@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionVibe Admin - Cập nhật khuyến mãi</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h2>VisionVibe</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                    <li><a href="products.html"><i class="fas fa-glasses"></i> Quản lý sản phẩm</a></li>
+                    <li><a href="users.html"><i class="fas fa-users"></i> Quản lý người dùng</a></li>
+                    <li><a href="orders.html"><i class="fas fa-shopping-cart"></i> Quản lý đơn hàng</a></li>
+                    <li class="active"><a href="promotions.html"><i class="fas fa-percent"></i> Khuyến mãi</a></li>
+                    <li><a href="notifications.html"><i class="fas fa-bell"></i> Thông báo</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <div class="header-content">
+                    <div class="header-left">
+                        <h1>Cập nhật khuyến mãi #<span id="promotionId">KM001</span></h1>
+                    </div>
+                    <div class="user-info">
+                        <span>admin@visionvibe.com</span>
+                        <button class="btn-logout" onclick="handleLogout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Đăng xuất
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <div class="breadcrumb">
+                <a href="index.html">Dashboard</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="promotions.html">Quản lý khuyến mãi</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Cập nhật khuyến mãi #<span id="breadcrumbPromotionId">KM001</span></span>
+            </div>
+
+            <!-- Update Promotion Form -->
+            <div class="form-container">
+                <form id="updatePromotionForm">
+                    <div class="form-section">
+                        <h3>Thông tin khuyến mãi</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Tên khuyến mãi:</label>
+                                <input type="text" value="Mừng xuân 2024" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Giá trị khuyến mãi (%):</label>
+                                <input type="number" min="0" max="100" value="20" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Thời gian bắt đầu:</label>
+                                <input type="datetime-local" value="2024-03-01T00:00" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Thời gian kết thúc:</label>
+                                <input type="datetime-local" value="2024-03-15T23:59" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Danh sách sản phẩm áp dụng</h3>
+                        <div class="product-selection">
+                            <div class="search-box">
+                                <input type="text" placeholder="Tìm kiếm sản phẩm..." onkeyup="filterProducts()">
+                                <button type="button"><i class="fas fa-search"></i></button>
+                            </div>
+                            <div class="product-list">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th><input type="checkbox" id="selectAll" onchange="toggleAllProducts()"></th>
+                                            <th>ID</th>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Danh mục</th>
+                                            <th>Thương hiệu</th>
+                                            <th>Giá gốc</th>
+                                            <th>Giá sau giảm</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><input type="checkbox" class="product-checkbox" checked></td>
+                                            <td>#P001</td>
+                                            <td>Aviator Classic</td>
+                                            <td>Kính mát</td>
+                                            <td>Ray-Ban</td>
+                                            <td>2.500.000 VND</td>
+                                            <td>2.000.000 VND</td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="checkbox" class="product-checkbox" checked></td>
+                                            <td>#P002</td>
+                                            <td>Holbrook</td>
+                                            <td>Kính thể thao</td>
+                                            <td>Oakley</td>
+                                            <td>1.800.000 VND</td>
+                                            <td>1.440.000 VND</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="selected-products">
+                                <h4>Sản phẩm đã chọn:</h4>
+                                <div class="selected-tags">
+                                    <span class="selected-tag">
+                                        Aviator Classic
+                                        <span class="remove-tag" onclick="removeProduct(this)">&times;</span>
+                                    </span>
+                                    <span class="selected-tag">
+                                        Holbrook
+                                        <span class="remove-tag" onclick="removeProduct(this)">&times;</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="window.location.href='promotions.html'">Hủy</button>
+                        <button type="submit" class="btn-primary">Cập nhật khuyến mãi</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get promotion ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const promotionId = urlParams.get('id') || 'KM001';
+        
+        // Update promotion ID in the page
+        document.getElementById('promotionId').textContent = promotionId;
+        document.getElementById('breadcrumbPromotionId').textContent = promotionId;
+
+        // Handle form submission
+        document.getElementById('updatePromotionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add update logic here
+            alert('Cập nhật khuyến mãi thành công!');
+            window.location.href = 'promotions.html';
+        });
+
+        function toggleAllProducts() {
+            const selectAll = document.getElementById('selectAll');
+            const checkboxes = document.getElementsByClassName('product-checkbox');
+            for (let checkbox of checkboxes) {
+                checkbox.checked = selectAll.checked;
+            }
+            updateSelectedTags();
+        }
+
+        function filterProducts() {
+            const searchText = document.querySelector('.search-box input').value.toLowerCase();
+            const rows = document.querySelectorAll('.product-list tbody tr');
+            
+            rows.forEach(row => {
+                const productName = row.cells[2].textContent.toLowerCase();
+                const category = row.cells[3].textContent.toLowerCase();
+                const brand = row.cells[4].textContent.toLowerCase();
+                
+                if (productName.includes(searchText) || 
+                    category.includes(searchText) || 
+                    brand.includes(searchText)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        function updateSelectedTags() {
+            const selectedTags = document.querySelector('.selected-tags');
+            selectedTags.innerHTML = '';
+            
+            document.querySelectorAll('.product-checkbox:checked').forEach(checkbox => {
+                const row = checkbox.closest('tr');
+                const productName = row.cells[2].textContent;
+                
+                const tag = document.createElement('span');
+                tag.className = 'selected-tag';
+                tag.innerHTML = `
+                    ${productName}
+                    <span class="remove-tag" onclick="removeProduct(this)">&times;</span>
+                `;
+                selectedTags.appendChild(tag);
+            });
+        }
+
+        function removeProduct(element) {
+            const productName = element.parentElement.textContent.trim();
+            const rows = document.querySelectorAll('.product-list tbody tr');
+            
+            rows.forEach(row => {
+                if (row.cells[2].textContent === productName) {
+                    row.querySelector('.product-checkbox').checked = false;
+                }
+            });
+            
+            updateSelectedTags();
+        }
+
+        function handleLogout() {
+            // Add logout logic here
+            window.location.href = '../login.html';
+        }
+    </script>
+</body>
+</html> 

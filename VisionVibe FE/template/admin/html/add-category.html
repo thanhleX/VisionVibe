@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionVibe Admin - Quản lý danh mục</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h2>VisionVibe</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                    <li class="active"><a href="products.html"><i class="fas fa-glasses"></i> Quản lý sản phẩm</a></li>
+                    <li><a href="users.html"><i class="fas fa-users"></i> Quản lý người dùng</a></li>
+                    <li><a href="orders.html"><i class="fas fa-shopping-cart"></i> Quản lý đơn hàng</a></li>
+                    <li><a href="promotions.html"><i class="fas fa-percent"></i> Khuyến mãi</a></li>
+                    <li><a href="notifications.html"><i class="fas fa-bell"></i> Thông báo</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <div class="header-content">
+                    <div class="header-left">
+                        <h1>Quản lý danh mục</h1>
+                    </div>
+
+                    <div class="user-info">
+                        <span>admin@visionvibe.com</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="breadcrumb">
+                <a href="index.html">Dashboard</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="products.html">Quản lý sản phẩm</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Quản lý danh mục</span>
+            </div>
+
+            <!-- Category Form -->
+            <div class="form-container">
+                <form id="categoryForm" class="admin-form">
+                    <div class="form-group">
+                        <label>Tên danh mục:</label>
+                        <input type="text" required placeholder="Nhập tên danh mục">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary"
+                            onclick="window.location.href='products.html'">Hủy</button>
+                        <button type="submit" class="btn-primary">Lưu danh mục</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Category List -->
+            <div class="table-container">
+                <h3>Danh sách danh mục</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tên danh mục</th>
+                            <th>Mô tả</th>
+                            <th>Số sản phẩm</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="categoryTableBody">
+                        <!-- Categories will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/category-form.js"></script>
+</body>
+
+</html>
