@@ -1,0 +1,41 @@
+spring:
+  datasource:
+    username: root
+    password: admin123
+    url: "jdbc:mysql://localhost:3306/vision_vibe"
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  servlet:
+    multipart:
+      enabled: true
+      max-request-size: 10MB
+      max-file-size: 10MB
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: thanhvjppro2004@gmail.com
+    password: decade04
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+paypal:
+  client:
+    id: ATHuw-VhnEGgcBsRDxsdn2_EBSAKK9h6-E5w9Lps95_SDGY92IWjHS7EXJXJRMGkJ8zXXF-kEczuR34Y
+    secret: EMiZNx9yJqEf-C9YVsuU6xkVGZv1M5PVMQHcjbDwgUVdWeood1r1RgVjC4vd9yFcpUMHHb_VxNLVEVLR
+  mode: sandbox
+
+jwt:
+  signerKey: "0tpW3AuazUoAL61xcfp6jz9yUmMCKHBA04OY8Z1AwZegfu5D9q/X/C7x9JTV0GcT"
+  valid-duration: 5
+  refreshable-duration: 40000
+
+cloudinary:
+  cloud_name: "dskwek4ju"
+  api_key: "575491814491519"
+  api_secret: "t-az2VOpw3jOm1hdcD2SEF0C2gw"
