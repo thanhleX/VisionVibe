@@ -1,0 +1,11 @@
+<h1 class="ms-3 mt-3">{{productCategoryName}}</h1>
+
+<div class="row ms-2 me-2" *ngIf="productSubCategories">
+    <div class="page col-4 border-radius-top-10 ps-2 pe-2 mt-3" *ngFor="let item of productSubCategories">
+
+        <div class="product-detail rounded ms-2 me-2">
+            <a [routerLink]="[item.name]"><img class="rounded" src={{item.thumbnailUrl}} alt=""></a>
+            <a class="title" [routerLink]="[item.name]"> {{item.name}}</a>
+        </div>
+    </div>
+</div>

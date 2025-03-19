@@ -1,0 +1,45 @@
+<div class="container">
+    <h1 class="text-center mb-4 mt-4">FIND ORDER</h1>
+    <input type="search" class="search-input form-control mb-4" placeholder="Search order...">
+
+    <div class="content p-4 rounded shadow">
+        <div class="row">
+            <div class="col-md-6 order-info">
+                <div><strong>ID:</strong> {{order.id}}</div>
+                <div><strong>Name:</strong> {{order.customerName}}</div>
+                <div><strong>Phone:</strong> {{order.phoneNumber}}</div>
+                <div><strong>Email:</strong> {{order.email}}</div>
+            </div>
+            <div class="col-md-6 order-info">
+                <div><strong>Address:</strong> {{order.address}}</div>
+                <div><strong>Status:</strong> <span [ngClass]="getStatusClass(order.status)">{{order.status}}</span>
+                </div>
+                <div><strong>Note:</strong> {{order.note}}</div>
+                <div><strong>Created at:</strong> {{order.createdAt}}</div>
+                <div><strong>Total Price:</strong> <span class="total-price">{{totalPrice(order) | currency}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Amount</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let detail of order.orderDetailResponseList">
+                            <td>{{detail.productDetailResponse.productDto.name}}</td>
+                            <td>{{detail.amount}}</td>
+                            <td>{{detail.productDetailResponse.productDto.price | currency}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

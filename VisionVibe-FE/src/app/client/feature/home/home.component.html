@@ -1,0 +1,106 @@
+<div class="banner-carousel">
+    <div id="home-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" *ngFor="let item of carousels, let i = index" data-bs-target="#home-carousel"
+                [attr.data-bs-slide-to]="i" [class.active]="i === 0"></button>
+        </div>
+        <div class="carousel-inner ">
+            <a class="carousel-item" *ngFor="let item of carousels, let i =index" [class.active]="i === 0 ">
+                <img (click)="navigateToBlog(item.blogCategoryDto.name,item.id)" [src]=item.thumbnailUrl alt="...">
+            </a>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#home-carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#home-carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+<div class="models">
+    <div class="models-header d-flex justify-content-between align-items-end mb-3">
+        <a [routerLink]="['product/Glasses',]" class="ms-4">
+            <h2>Models</h2>
+        </a>
+        <a [routerLink]="['product/Glasses',]" class="me-4">
+            <h4>View all</h4>
+        </a>
+    </div>
+    <div class="models-carousel">
+        <div id="models-carousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#models-carousel"
+                    *ngFor="let item of glassCategories, let i  = index" [attr.data-bs-slide-to]="i"
+                    [class.active]="i === 0"></button>
+            </div>
+            <div class="carousel-inner">
+
+                <div class="carousel-item" [class.active]=" i === 0"
+                    *ngFor="let item of glassCategories, let i = index">
+                    <a [routerLink]="['product',item.productCategoryDto.name,item.name]"><img [src]=item.thumbnailUrl
+                            alt="..."></a>
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#models-carousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#models-carousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="frames">
+        <div class="frames-header d-flex justify-content-between align-items-end mb-3">
+            <a [routerLink]="['product/Frames',]" class="ms-4">
+                <h2>Spare frames</h2>
+            </a>
+            <a [routerLink]="['product/Frames',]" class="me-4">
+                <h4>View all</h4>
+            </a>
+        </div>
+        <div class="frames-body">
+            <div class="row overflow-hidden" appDivDragger>
+                <div class="col-2 ps-1 pe-1" *ngFor="let item of frameCategories">
+                    <div class="frame-info">
+                        <a [routerLink]="['product',item.productCategoryDto.name ,item.name]">
+                            <div class="title">{{item.name}}</div>
+                            <img src={{item.thumbnailUrl}} alt="" class="frame-img">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="news">
+        <div class="news-header d-flex justify-content-between align-items-end mb-3">
+            <a [routerLink]="['blog/News']" class="ms-4">
+                <h2>News</h2>
+            </a>
+            <a [routerLink]="['blog/News']" class="me-4">
+                <h4>View all</h4>
+            </a>
+        </div>
+        <div class="news-body">
+            <div class="row overflow-hidden" appDivDragger>
+                <div class="col-5 ps-1 pe-1" *ngFor="let item of news">
+
+                    <a [routerLink]="['/blog',item.blogCategoryDto.name, item.id]">
+                        <div class="news-info">
+                            <img src={{item.thumbnailUrl}} alt="">
+                            <p class="title">{{ item.title }}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

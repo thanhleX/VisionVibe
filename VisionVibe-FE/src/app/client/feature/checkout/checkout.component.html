@@ -1,0 +1,107 @@
+<div class="warpper">
+    <div class="row m-2">
+        <div class="col-8">
+            <h2>Customer Information</h2>
+            <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                    <label for="customerName" class="form-label">Customer Name</label>
+                    <input type="text" id="customerName" formControlName="customerName" class="form-control">
+                    <div
+                        *ngIf="customerForm.get('customerName')?.invalid && (customerForm.get('customerName')?.touched || customerForm.get('customerName')?.dirty)">
+                        <small class="text-danger">Customer name is required.</small>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" formControlName="email" class="form-control">
+                    <div
+                        *ngIf="customerForm.get('email')?.invalid && (customerForm.get('email')?.touched || customerForm.get('email')?.dirty)">
+                        <small class="text-danger">Please enter a valid email.</small>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="phoneNumber" class="form-label">Phone Number</label>
+                    <input type="text" id="phoneNumber" formControlName="phoneNumber" class="form-control">
+                    <div
+                        *ngIf="customerForm.get('phoneNumber')?.invalid && (customerForm.get('phoneNumber')?.touched || customerForm.get('phoneNumber')?.dirty)">
+                        <small class="text-danger">Phone number is required.</small>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" id="address" formControlName="address" class="form-control">
+                    <div
+                        *ngIf="customerForm.get('address')?.invalid && (customerForm.get('address')?.touched || customerForm.get('address')?.dirty)">
+                        <small class="text-danger">Address is required.</small>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="note" class="form-label">Note</label>
+                    <textarea id="note" formControlName="note" class="form-control"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="paymentMethod" class="form-label">Payment Method</label>
+                    <div id="paymentMethod" class="form-group d-flex justify-content-around">
+                        <div *ngFor="let paymentMethod of paymentMethods" class="form-check">
+                            <input class="form-check-input" type="radio" [value]="paymentMethod.id"
+                                formControlName="paymentMethod" [id]="paymentMethod.name">
+                            <label class="form-check-label" [for]="paymentMethod.name"><span
+                                    [innerHTML]="paymentMethod.fontawesomeLogo"></span> {{ paymentMethod.name }}</label>
+                        </div>
+                    </div>
+                    <div
+                        *ngIf="customerForm.get('paymentMethod')?.invalid && (customerForm.get('paymentMethod')?.touched || customerForm.get('paymentMethod')?.dirty)">
+                        <small class="text-danger">Payment method is required.</small>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" [disabled]="customerForm.invalid">Submit</button>
+            </form>
+        </div>
+        <div class="col-4">
+            <h2>Your Cart</h2>
+            <div class="cart">
+                <div class="row mt-1 py-1" *ngFor="let item of cart">
+                    <div class="info-top d-flex ">
+                        <div class="product col-4">
+                            <img [src]=item.productDetail.productImageResponseList[0].url alt="">
+                        </div>
+                        <div class="product col-8 d-flex flex-column justify-content-between">
+                            <div class="name"> {{item.productDetail.productDto.name}}</div>
+                            <div class="price">{{item.productDetail.productDto.price}}$$</div>
+                        </div>
+                    </div>
+
+                    <div class="info-bottom d-flex mt-1">
+                        <div class="col-4 d-flex flex-column align-items-center justify-content-center">
+                            Amount: {{item.amount}}
+                        </div>
+                        <div class="col-8">
+                            <div class="color">Color: {{item.productDetail.productColorDto.color}}</div>
+                            <div class="material" *ngIf="item.productDetail.productMaterialDto">Material:
+                                {{item.productDetail.productMaterialDto.material}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="total d-flex justify-content-between  align-items-center">
+                    <div class="text">Subtotal price: </div>
+                    <div class="total-price">{{totalPrice}} </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isSubmitting" class="d-flex justify-content-center align-items-center"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1050;">
+    <div class="spinner-border text-light" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+<div class="container m-3">

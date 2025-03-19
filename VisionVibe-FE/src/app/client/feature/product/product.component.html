@@ -1,0 +1,45 @@
+<div class="warpper">
+    <!-- Search and Subcategory Section -->
+    <div class="search-bar d-flex align-items-center">
+        <h3 class="ms-3">
+            Search: <span class="subcategory">{{ productSubCategoryName }}</span>
+        </h3>
+    </div>
+
+    <!-- Products Section -->
+    <div class="products mt-3">
+        <div class="row ms-2 me-2">
+            <div class="col-md-4 col-sm-6 mb-4" *ngFor="let item of products">
+                <div class="product-detail">
+                    <img [routerLink]="[item.name]" [src]="item.thumbnailUrl" alt="">
+
+                    <div class="product-content p-3">
+                        <div class="product-name mb-2">
+                            <h5>{{ item.name }}</h5>
+                        </div>
+
+                        <div *ngIf="item.productDetailDtoList[0]?.productMaterialDto" class="product-material">
+                            <span>Material:</span>
+                            <div *ngFor="let productDetail of uniqueMaterials(item.productDetailDtoList)">
+                                <span *ngIf="productDetail.productMaterialDto">
+                                    {{ productDetail.productMaterialDto.material }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="product-colors mt-2">
+                            <div *ngFor="let productDetail of uniqueColor(item.productDetailDtoList)"
+                                class="product-color"
+                                [ngStyle]="{'background-color': productDetail.productColorDto.color}">
+                            </div>
+                        </div>
+
+                        <div class="price mt-2">
+                            <h5>{{ item.price }} $</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

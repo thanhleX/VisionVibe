@@ -1,0 +1,60 @@
+<div class="container m-3">
+  <h1>Update Blog</h1>
+
+  <form *ngIf="blogForm" [formGroup]="blogForm">
+    <div class="mb-3">
+      <label for="title">Title</label>
+      <input type="text" id="title" class="form-control" formControlName="title" placeholder="Enter blog title" />
+      <div *ngIf="blogForm.get('title')?.invalid && blogForm.get('title')?.touched">
+        <small class="text-danger">Title is required</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="subTitle">Sub Title</label>
+      <input type="text" id="subTitle" class="form-control" formControlName="subTitle"
+        placeholder="Enter blog sub title" />
+      <div *ngIf="blogForm.get('subTitle')?.invalid && blogForm.get('subTitle')?.touched">
+        <small class="text-danger">Sub Title is required</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="category">Blog Category</label>
+      <input type="text" id="category" class="form-control" formControlName="category" readonly>
+    </div>
+
+    <div class="mb-3">
+      <label for="thumbnail">Thumbnail Image</label>
+      <input type="file" id="thumbnail" class="form-control" (change)="onFileSelected($event)" />
+    </div>
+
+    <div class="mb-3">
+      <label for="description">Description</label>
+      <editor formControlName="description" apiKey="82zjfv71ttfqp08cvqel6a06gj0ytkmo5k09lkssw79fdrtk" [init]="{
+          height: 500,
+          plugins: [
+            'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
+            'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
+            'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
+          ],
+          toolbar:
+           'undo redo | casechange blocks | bold italic backcolor | \
+           alignleft aligncenter alignright alignjustify | \
+           bullist numlist checklist outdent indent | removeformat | a11ycheck code table help'
+        }"></editor>
+      <div *ngIf="blogForm.get('description')?.invalid && blogForm.get('description')?.touched">
+        <small class="text-danger">Description is required</small>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="blogForm.invalid" (click)="onSubmit()">Update
+      Blog</button>
+  </form>
+</div>
+
+<div *ngIf="isSubmitting" class="d-flex justify-content-center align-items-center overlay">
+  <div class="spinner-border text-light" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>

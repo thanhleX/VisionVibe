@@ -1,0 +1,83 @@
+<div class="warpper">
+    <div class="header d-flex justify-content-between align-items-center mt-4 mb-3">
+        <h1 class="text-primary">ALL PRODUCTS</h1>
+        <div>
+            <button class="btn btn-success" [routerLink]="['create/product-sub-category']"
+                *ngIf="checkScope(['ADMIN','SALE'])">Create sub-category</button>
+            <button class="btn btn-success" [routerLink]="['create/product-category']"
+                *ngIf="checkScope(['ADMIN','SALE'])"> Create category</button>
+            <button class="btn btn-success" [routerLink]="['create']" *ngIf="checkScope(['ADMIN','SALE'])">
+                Create product
+            </button>
+        </div>
+    </div>
+    <ul>
+        <li *ngFor="let category of data">
+            <div class="d-flex justify-content-between">
+                <span (click)="toggleCategory(category.id)">{{ category.name }}</span>
+                <div>
+                    <button class="btn btn-danger" (click)="deleteProductCategoryById(category.id)">
+                        Delete category</button>
+                </div>
+            </div>
+
+            <ul *ngIf="category.id === selectedCategoryId">
+                <li *ngFor="let subCategory of category.productSubCategoryDtoList">
+                    <div class="d-flex justify-content-between">
+                        <span (click)="toggleSubCategory(subCategory.id)">{{ subCategory.name }}</span>
+                        <div>
+                            <button class="btn btn-primary"
+                                [routerLink]="['update/product-sub-category', subCategory.id]"> Update
+                                sub-category</button>
+                            <button class="btn btn-danger" (click)="deleteProductSubCategoryById(subCategory.id)">Delete
+                                sub-category</button>
+                        </div>
+                    </div>
+
+                    <ul *ngIf="subCategory.id === selectedSubCategoryId">
+                        <li *ngFor="let product of subCategory.productResponseList">
+                            <div class="product-name d-flex justify-content-between mt-5">
+                                <span (click)="toggleProduct(product.id)">{{ product.name }}</span>
+                                <div class="action">
+                                    <button class="btn btn-primary" [routerLink]="['update',product.id]"> Update
+                                        Product</button>
+                                    <button class="btn btn-success"
+                                        [routerLink]="['create/new-product-detail',product.id]"> Create product
+                                        detail</button>
+                                    <button class="btn btn-danger" (click)="deleteProduct(product.id)"> Delete
+                                        product</button>
+                                </div>
+                            </div>
+                            <hr>
+                            <table class="table table-hover table-bordered table-striped text-center align-middle">
+                                <thead class="table-primary ">
+                                    <tr>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Stock</th>
+                                        <th scope="col">Color</th>
+                                        <th scope="col" *ngIf="hasMaterial(product)">Material</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let detail of product.productDetailDtoList">
+                                        <td>{{ product.price }}</td>
+                                        <td>{{ detail.stock }}</td>
+                                        <td>{{ detail.productColorDto.color }}</td>
+                                        <td *ngIf="hasMaterial(product)">{{ detail.productMaterialDto?.material }}</td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm"
+                                                [routerLink]="['update/product-detail',detail.id]">Edit</button>
+                                            <button class="btn btn-danger btn-sm"
+                                                (click)="deleteProductDetail(detail.id)">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

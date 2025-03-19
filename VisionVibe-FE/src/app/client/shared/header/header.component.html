@@ -1,0 +1,78 @@
+<div class="header d-flex justify-content-between align-items-center">
+    <div class="menu btn btn-outline-dark" (click)="toggleMenu()"> 
+      <i class="fa-solid fa-bars"></i> Menu
+    </div>
+    
+    <a [routerLink]="['']" class="logo">VISIONVIBE</a>
+    
+    <div class="language" (click)="toggleCart()"> 
+      <i class="fa-solid fa-cart-shopping"></i>
+    </div>
+  
+    <!-- Overlay -->
+    <div *ngIf="menuOpen" class="overlay" (click)="closeMenu()"></div>
+    <div *ngIf="cartOpen" class="overlay" (click)="closeCart()"></div>
+  
+    <!-- Side Navigation Menu -->
+    <div class="sidenav" [class.active]="menuOpen">
+      <ul>
+        <li *ngFor="let category of categories" (mouseenter)="onHoverCategory(category.id)">
+          <a [routerLink]="['product', category.name]" (click)="closeMenu()">{{ category.name }}</a>
+          <ul class="submenu" *ngIf="activeCategoryId === category.id">
+            <li *ngFor="let subCategory of filterSubCategories()">
+              <a [routerLink]="['product', subCategory.productCategoryDto.name, subCategory.name]" (click)="closeMenu()">
+                <div class="model-info">
+                  <img [src]="subCategory.thumbnailUrl" alt="{{subCategory.name}}">
+                  <div class="title">{{ subCategory.name }}</div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  
+    <!-- Cart -->
+    <div class="cart" [class.active]="cartOpen">
+      <div *ngIf="cart.length > 0">
+        <div class="row mt-1 py-1" *ngFor="let item of cart">
+          <div class="info-top d-flex">
+            <div class="product">
+              <img [src]="item.productDetail.productImageResponseList[0].url" alt="{{item.productDetail.productDto.name}}">
+            </div>
+            <div class="details">
+              <div class="name">{{ item.productDetail.productDto.name }}</div>
+              <div class="price">{{ item.productDetail.productDto.price }} $$</div>
+            </div>
+          </div>
+  
+          <div class="info-bottom d-flex">
+            <div class="counter">
+              <button class="btn btn-primary" (click)="decrease(item)" [disabled]="item.amount === 1">-</button>
+              <input type="number" [(ngModel)]="item.amount" readonly>
+              <button class="btn btn-primary" (click)="increase(item)" [disabled]="item.amount === item.productDetail.stock">+</button>
+            </div>
+            <div class="details">
+              <div class="color">Color: {{ item.productDetail.productColorDto.color }}</div>
+              <div class="material" *ngIf="item.productDetail.productMaterialDto">
+                Material: {{ item.productDetail.productMaterialDto.material }}
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="total">
+          <span>Subtotal price:</span>
+          <span>{{ totalPrice }} $$</span>
+        </div>
+  
+        <div class="clear" (click)="clearCart()">CLEAR CART</div>
+        <div class="checkout-button" [routerLink]="['checkout']" (click)="closeCart()">GO TO CHECKOUT</div>
+      </div>
+  
+      <div *ngIf="cart.length === 0" class="empty-cart">
+        Go buy something!
+      </div>
+    </div>
+  </div>
+  

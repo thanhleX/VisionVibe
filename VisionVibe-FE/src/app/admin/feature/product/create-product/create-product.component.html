@@ -1,0 +1,81 @@
+<div class="container mt-3">
+  <h2>Create New Product</h2>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+    <div class="mb-3">
+      <label for="name">Name</label>
+      <input type="text" id="name" class="form-control" formControlName="name" placeholder="Enter Product Name" />
+      <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched">
+        <small class="text-danger">Name is Required</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="price">Price</label>
+      <input type="text" id="price" class="form-control" formControlName="price" placeholder="Enter Product Price" />
+      <div *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched">
+        <small class="text-danger">Price is Required</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="productCategoryId">Product Category</label>
+      <select id="productCategoryId" class="form-control" formControlName="productCategoryId"
+        (change)="onCategoryChange()">
+        <option value="">Select Category</option>
+        <option *ngFor="let cat of categories" [ngValue]="cat.id">{{ cat.name }}</option>
+      </select>
+      <div *ngIf="productForm.get('productCategoryId')?.invalid && productForm.get('productCategoryId')?.touched">
+        <small class="text-danger">Category is Required</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="productSubCategoryId">Product Subcategory</label>
+      <select id="productSubCategoryId" class="form-control" formControlName="productSubCategoryId">
+        <option value="" *ngIf="!productForm.get('productCategoryId')?.value">Select Category First</option>
+        <option *ngFor="let subCategory of subCategories" [ngValue]="subCategory.id">
+          {{ subCategory.name }}
+        </option>
+      </select>
+      <div *ngIf="productForm.get('productSubCategoryId')?.invalid && productForm.get('productSubCategoryId')?.touched">
+        <small class="text-danger">Subcategory is Required</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="thumbnail">Thumbnail Image</label>
+      <input type="file" id="thumbnail" class="form-control" (change)="onFileChange($event)" />
+      <div *ngIf="productForm.get('thumbnail')?.invalid && productForm.get('thumbnail')?.touched">
+        <small class="text-danger">Thumbnail is Required</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="description">Description</label>
+      <editor formControlName="description" apiKey="82zjfv71ttfqp08cvqel6a06gj0ytkmo5k09lkssw79fdrtk" [init]="{
+          height: 500,
+          plugins: [
+            'a11ychecker', 'advlist', 'advcode', 'advtable', 'autolink', 'checklist', 'export',
+            'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks',
+            'powerpaste', 'fullscreen', 'formatpainter', 'insertdatetime', 'media', 'table', 'help', 'wordcount'
+          ],
+          toolbar: 'undo redo | casechange blocks | bold italic backcolor | \
+                    alignleft aligncenter alignright alignjustify | \
+                    bullist numlist checklist outdent indent | removeformat | a11ycheck code table help'
+        }"></editor>
+      <div *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched">
+        <small class="text-danger">Description is Required</small>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">Create Product</button>
+  </form>
+</div>
+
+<div *ngIf="isSubmitting" class="d-flex justify-content-center align-items-center"
+  style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1050;">
+  <div class="spinner-border text-light" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>

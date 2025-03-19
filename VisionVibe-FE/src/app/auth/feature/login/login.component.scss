@@ -1,0 +1,38 @@
+::placeholder {
+    font-size: 14px; 
+    color: #bfc5cb;  
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .divider::before,
+  .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #000; 
+  }
+  
+  .divider::before {
+    margin-right: 10px; 
+  }
+  
+  .divider::after {
+    margin-left: 10px;
+  }
+
+  img{
+    max-height: 100vh;
+    object-fit: cover;
+  }
+
+  .form-control{
+    border-color: #9a9a9a;
+  }
+
+  label{
+    color: #b3b3b3;
+  }

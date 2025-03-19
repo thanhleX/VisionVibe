@@ -1,0 +1,41 @@
+<div class="wrapper">
+    <div class="header d-flex justify-content-between align-items-center mt-4 mb-3">
+        <h1 class="text-primary">All Users</h1>
+        <div>
+            <button class="btn btn-success" [routerLink]="['/admin/sign-up']"
+                *ngIf="checkScope(['ADMIN', 'MODERATOR'])">Create User</button>
+        </div>
+    </div>
+
+    <table class="table table-hover table-bordered table-striped text-center align-middle">
+        <thead class="table-primary">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Username</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Role</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.fullName }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.phone }}</td>
+                <td>
+                    <div *ngFor="let role of user.roleDtos">
+                        {{ role.roleName }}
+                    </div>
+                </td>
+                <td>
+                    <button class="btn btn-primary btn-sm" [routerLink]="['update', user.id]">Update</button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteUser(user.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

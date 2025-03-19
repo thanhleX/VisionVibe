@@ -1,0 +1,22 @@
+<div class="container mt-3">
+    <h2>Create New Category</h2>
+    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" formControlName="name" placeholder="Enter product name" />
+            <div *ngIf="categoryForm.get('name')?.invalid && categoryForm.get('name')?.touched">
+                <small class="text-danger">Name is required</small>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="categoryForm.invalid">Create Category</button>
+    </form>
+
+    <div *ngIf="isSubmitting" class="d-flex justify-content-center align-items-center"
+        style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.5); z-index: 1050;">
+        <div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</div>

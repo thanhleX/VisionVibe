@@ -1,0 +1,33 @@
+<div class="footer">
+    <div class="row mt-5 ms-2 me-2">
+        <div class="col-lg-3 d-flex flex-column align-items-start">
+            <h2>About Us</h2>
+            <a *ngFor="let item of aboutUs" [routerLink]="['blog', item.blogCategoryDto.name, item.id]">
+                {{ item.title }}
+            </a>
+        </div>
+        <div class="col-lg-3 d-flex flex-column align-items-start">
+            <h2>Support</h2>
+            <a *ngFor="let item of support" [routerLink]="['blog', item.blogCategoryDto.name, item.id]">
+                {{ item.title }}
+            </a>
+        </div>
+        <div class="col-lg-3 d-flex flex-column align-items-start">
+            <h2>Legal</h2>
+            <a *ngFor="let item of legal" [routerLink]="['blog', item.blogCategoryDto.name, item.id]">
+                {{ item.title }}
+            </a>
+        </div>
+        <div class="col-lg-3 d-flex flex-column align-items-start">
+            <h4>Connect with VisionVibe</h4>
+            <div class="social-icons">
+                <a href="#" class="facebook">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="#" class="youtube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

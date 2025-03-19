@@ -1,0 +1,29 @@
+<div class="warpper">
+    <div class="header menu">
+        <h2>VisionVibe</h2>
+    </div>
+    <div class="dashboard menu" [routerLink]="['dashboard']">
+        Dashboard
+    </div>
+    <div *ngIf="checkScope(['ADMIN','MODERATOR','WRITER']) " class="blog menu" [routerLink]="['blog']">
+        Blog
+    </div>
+    <div *ngIf="checkScope(['ADMIN','MODERATOR','SALE'])" class="product menu" [routerLink]="['product']">
+        Product
+    </div>
+    <div *ngIf="checkScope(['ADMIN','MODERATOR','SALE'])" class="order menu" [routerLink]="['order']">
+        Order
+    </div>
+    <div *ngIf="checkScope(['ADMIN','MODERATOR','SALE'])" class="notification menu" [routerLink]="['notification']">
+        Notification
+    </div>
+    <div *ngIf="checkScope(['ADMIN','MODERATOR'])" class="profile menu" [routerLink]="['users']">
+        Users
+    </div>
+    <div *ngIf="checkScope(['ADMIN','MODERATOR'])" class="signup menu" [routerLink]="['sign-up']">
+        Sign up
+    </div>
+    <div class="logout menu" (click)="logout()">
+        Log out
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<div *ngIf="isSubmitting" class="d-flex justify-content-center align-items-center"
+  style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1050;">
+  <div class="spinner-border text-light" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<div class="container mt-3">
+  <h2>Create Product Detail</h2>
+  <form [formGroup]="productDetailForm">
+
+    <div class="mb-3">
+      <label for="productName">Product Name</label>
+      <input type="text" id="productName" class="form-control" formControlName="product"
+        placeholder="Enter product name" [value]="product?.name" readonly />
+      <div *ngIf="productDetailForm.get('product')?.invalid && productDetailForm.get('product')?.touched">
+        <small class="text-danger">Product Name is required</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="color">Color</label>
+      <select id="color" class="form-control" formControlName="colorId" (change)="updateSelectedColor($event)"
+        [ngStyle]="{'background-color': selectedColor}">
+        <option value="">Select Color</option>
+        <option *ngFor="let color of colors" [value]="color.id" [ngStyle]="{'background-color': color.color}">&nbsp;
+        </option>
+      </select>
+      <div *ngIf="productDetailForm.get('colorId')?.invalid && productDetailForm.get('colorId')?.touched">
+        <small class="text-danger">Color is required</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="material">Material</label>
+      <select id="material" class="form-control" formControlName="materialId">
+        <option value="">None</option>
+        <option *ngFor="let material of materials" [value]="material.id">{{ material.material }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="stock">Stock</label>
+      <input type="text" id="stock" class="form-control" formControlName="stock" placeholder="Enter stock quantity" />
+      <div *ngIf="productDetailForm.get('stock')?.invalid && productDetailForm.get('stock')?.touched">
+        <small class="text-danger">Stock is required</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="images">Images</label>
+      <input type="file" id="images" class="form-control" (change)="onFileChange($event)" multiple />
+      <div class="mt-2" *ngIf="selectedImages.length > 0">
+        <div class="image-row" appDivDragger>
+          <div *ngFor="let img of selectedImages" class="images">
+            <img [src]="img" alt="Selected Image" class="selected-image" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="productDetailForm.invalid" (click)="onSubmit()">Create
+      Product Detail</button>
+  </form>
+</div>

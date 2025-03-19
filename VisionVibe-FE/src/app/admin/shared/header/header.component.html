@@ -1,0 +1,15 @@
+<div class="wrapper d-flex justify-content-between align-items-center px-3">
+    <div class="page">
+        Current Page: <h5>{{currentPage}}</h5>
+    </div>
+    <div class="user d-flex align-items-center">
+        <i class="fa-regular fa-bell ms-2" (click)="navigateToNotification()"></i>
+        <span class="required" *ngIf="notificationAlert">*</span>
+        <i class="fa-solid fa-gear ms-2"></i>
+        <div class="user-info"><i class="fa-solid fa-user ms-2"></i> Hello, {{userInfo?.fullname}}</div>
+    </div>
+</div>
+
+<div [ngClass]="{'notification': true, 'show': showNotification}">
+    <p>{{ message }}</p>
+</div>

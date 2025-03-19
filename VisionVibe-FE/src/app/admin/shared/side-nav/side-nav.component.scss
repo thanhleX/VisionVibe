@@ -1,0 +1,50 @@
+.warpper {
+  width: 85%;
+  background-color: #3f3f46;
+  margin-top: 2vh;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 95vh;
+}
+
+.menu {
+  height: 10vh;
+  padding-left: 7vh;
+  display: flex;
+  align-items: center;
+}
+
+.menu:first-child {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.menu:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.menu:hover {
+  cursor: pointer;
+  background-color: #858598;
+}
+
+.menu:first-child:hover {
+  cursor: default;
+  background-color: #3f3f46;
+}
+
+.header {
+  height: 15vh;
+  border-width: 2px;
+  border-style: solid;
+  border-image: linear-gradient(
+      to right,
+      rgba(126, 126, 126, 0.1),
+      rgb(227, 227, 227),
+      rgba(126, 126, 126, 0.1)
+    )
+    1;
+}
