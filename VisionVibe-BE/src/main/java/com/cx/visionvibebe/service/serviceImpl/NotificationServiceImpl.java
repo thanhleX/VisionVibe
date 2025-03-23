@@ -47,7 +47,7 @@ public class NotificationServiceImpl implements NotificationService {
     public void sendOrderMail(String to, String subject, String htmlContent, Long billId) {
         MimeMessage message = mailSender.createMimeMessage();
         try {
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
             helper.setFrom(senderMail);
             helper.setTo(to);
             helper.setSubject(subject);

@@ -16,13 +16,14 @@ spring:
     host: smtp.gmail.com
     port: 587
     username: thanhvjppro2004@gmail.com
-    password: decade04
+    password: eipp qlme navo nnwa
     properties:
       mail:
         smtp:
           auth: true
           starttls:
             enable: true
+            required: true
 
 paypal:
   client:

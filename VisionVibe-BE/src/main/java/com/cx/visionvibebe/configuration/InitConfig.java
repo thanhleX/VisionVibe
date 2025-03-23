@@ -27,7 +27,7 @@ public class InitConfig {
     private final PermissionRepository permissionRepository;
     private final PasswordEncoder passwordEncoder;
 
-    // Danh sách permission
+    // List of permissions
     private static final List<String> PERMISSIONS = List.of(
             "CREATE_BLOG", "READ_BLOG", "UPDATE_BLOG", "DELETE_BLOG",
             "CREATE_PRODUCT", "READ_PRODUCT", "UPDATE_PRODUCT", "DELETE_PRODUCT",
@@ -43,19 +43,36 @@ public class InitConfig {
             "CONFIRM_ORDER", "DENY_ORDER"
     );
 
-    // Danh sách role
+    // List of roles
     private static final List<String> ROLES = List.of("ADMIN", "MODERATOR", "SALE", "WRITER");
 
     @Bean
     public ApplicationRunner applicationRunner() {
         return args -> {
-            initPermissions(); // Khởi tạo permission
-            initRoles();       // Khởi tạo role và phân quyền cho role
-            initAdminAccount(); // Khởi tạo tài khoản admin
+            if (isDatabaseEmpty()) {
+                initPermissions(); // Initiate permission
+                initRoles();       // Create roles and assign permissions to roles
+                initAdminAccount(); // Create admin account
+            } else {
+                log.warn("Database already initialized. Skipping initialization.");
+                initAdminAccount();
+            }
         };
     }
 
-    // 👉 Khởi tạo permission
+    // Check if the database is initialized
+    private boolean isDatabaseEmpty() {
+        long permissionCount = permissionRepository.count();
+        long roleCount = roleRepository.count();
+        long userCount = userRepository.count();
+
+        log.info("Current state -> Permissions: {}, Roles: {}, Users: {}", permissionCount, roleCount, userCount);
+
+        // If all are 0 -> Not initialized
+        return permissionCount == 0 && roleCount == 0 && userCount == 0;
+    }
+
+    // Initiate permission
     private void initPermissions() {
         for (String permissionName : PERMISSIONS) {
             if (!permissionRepository.existsPermissionByPermissionName(permissionName)) {
@@ -63,16 +80,16 @@ public class InitConfig {
                         .permissionName(permissionName)
                         .build();
                 permissionRepository.save(permission);
-                log.info("✅ Created permission: {}", permissionName);
+                log.info("Created permission: {}", permissionName);
             }
         }
     }
 
-    // 👉 Khởi tạo role và phân quyền cho từng role
+    // Create roles and assign permissions to roles
     private void initRoles() {
         List<Permission> allPermissions = permissionRepository.findAll();
 
-        // Lấy permission theo tên
+        // Get permission by name
         Set<Permission> blogPermissions = getPermissions(allPermissions,
                 "CREATE_BLOG", "READ_BLOG", "UPDATE_BLOG", "DELETE_BLOG");
 
@@ -101,30 +118,30 @@ public class InitConfig {
         Set<Permission> confirmPermissions = getPermissions(allPermissions,
                 "CONFIRM_ORDER", "DENY_ORDER");
 
-        // ✅ ADMIN: Có tất cả các quyền
+        // ADMIN: Have all permissions
         createRole("ADMIN", new HashSet<>(allPermissions));
 
-        // ✅ MODERATOR: Quản lý bài viết, thông báo, người dùng
+        // MODERATOR: Manage posts, notifications, users
         createRole("MODERATOR", new HashSet<>());
         addPermissionsToRole("MODERATOR", blogPermissions);
         addPermissionsToRole("MODERATOR", blogCategoryPermissions);
         addPermissionsToRole("MODERATOR", notificationPermissions);
         addPermissionsToRole("MODERATOR", userPermissions);
 
-        // ✅ SALE: Quản lý sản phẩm, đơn hàng, xác nhận đơn hàng
+        // SALE: Manage products, orders, order confirmation
         createRole("SALE", new HashSet<>());
         addPermissionsToRole("SALE", productPermissions);
         addPermissionsToRole("SALE", productCategoryPermissions);
         addPermissionsToRole("SALE", orderPermissions);
         addPermissionsToRole("SALE", confirmPermissions);
 
-        // ✅ WRITER: Quản lý bài viết
+        // WRITER: Manage posts
         createRole("WRITER", new HashSet<>());
         addPermissionsToRole("WRITER", blogPermissions);
         addPermissionsToRole("WRITER", blogCategoryPermissions);
     }
 
-    // 👉 Lấy permission từ tên
+    // Get permission from name
     private Set<Permission> getPermissions(List<Permission> allPermissions, String... names) {
         Set<Permission> result = new HashSet<>();
         for (String name : names) {
@@ -136,7 +153,7 @@ public class InitConfig {
         return result;
     }
 
-    // 👉 Tạo role mới
+    // Create new role
     private void createRole(String roleName, Set<Permission> permissions) {
         if (!roleRepository.existsRoleByRoleName(roleName)) {
             Role role = Role.builder()
@@ -144,21 +161,21 @@ public class InitConfig {
                     .permissions(permissions)
                     .build();
             roleRepository.save(role);
-            log.info("✅ Created role: {}", roleName);
+            log.info("Created role: {}", roleName);
         }
     }
 
-    // 👉 Gán quyền cho role
+    // Assign permissions to roles
     private void addPermissionsToRole(String roleName, Set<Permission> permissions) {
         Role role = roleRepository.findRoleByRoleName(roleName)
                 .orElseThrow(() -> new RuntimeException("Role " + roleName + " not found"));
 
         role.getPermissions().addAll(permissions);
         roleRepository.save(role);
-        log.info("✅ Added permissions to role: {}", roleName);
+        log.info("Added permissions to role: {}", roleName);
     }
 
-    // 👉 Khởi tạo tài khoản admin
+    // Create admin account
     private void initAdminAccount() {
         if (!userRepository.existsUserByUsername("admin")) {
             Role adminRole = roleRepository.findRoleByRoleName("ADMIN").orElseThrow(() ->
@@ -174,9 +191,9 @@ public class InitConfig {
                     .build();
 
             userRepository.save(admin);
-            log.info("✅ Created admin account");
+            log.info("Created admin account");
         } else {
-            log.warn("⚠️ Admin account already exists");
+            log.warn("Admin account already exists");
         }
     }
 }
