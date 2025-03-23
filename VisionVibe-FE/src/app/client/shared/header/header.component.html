@@ -16,7 +16,7 @@
     <!-- Side Navigation Menu -->
     <div class="sidenav" [class.active]="menuOpen">
       <ul>
-        <li *ngFor="let category of categories" (mouseenter)="onHoverCategory(category.id)">
+        <li *ngFor="let category of categories" (mouseenter)="onHoverCategory(category.id)" (mouseleave)="closeSubMenu()">
           <a [routerLink]="['product', category.name]" (click)="closeMenu()">{{ category.name }}</a>
           <ul class="submenu" *ngIf="activeCategoryId === category.id">
             <li *ngFor="let subCategory of filterSubCategories()">

@@ -1,14 +1,197 @@
-.bottom-image:first-child {
-  margin-left: 0px;
-}
+.product-detail-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 
-.bottom-image {
-  margin-left: 5px;
-  width: 20%;
-  height: 20%;
-}
+  .product-detail {
+    display: flex;
+    gap: 40px;
 
-.inactive {
-  opacity: 0.6;
-  border: none;
+    .product-images {
+      width: 50%; // Giảm kích thước ảnh chính xuống để hiển thị ảnh phụ rõ hơn
+      
+      .main-image {
+        img {
+          width: 100%;
+          height: 400px; // Giảm chiều cao của ảnh chính
+          border-radius: 12px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+          object-fit: cover;
+        }
+      }
+
+      .thumbnail-images {
+        display: flex;
+        gap: 8px;
+        margin-top: 12px;
+        overflow-x: auto;
+
+        .thumbnail {
+          width: 60px;
+          height: 60px;
+          cursor: pointer;
+          border: 2px solid transparent;
+          transition: border 0.2s ease;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6px;
+          }
+
+          &.active {
+            border-color: #007bff;
+          }
+
+          &:hover {
+            border-color: #ccc;
+          }
+        }
+      }
+    }
+
+    .product-info {
+      width: 50%;
+
+      .category {
+        font-size: 18px;
+        color: #888;
+        margin-bottom: 8px;
+      }
+
+      .product-name {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .color-options {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 16px;
+
+        span {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          cursor: pointer;
+          transition: transform 0.2s;
+
+          &.active {
+            border: 2px solid #000;
+          }
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      .material-options {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 16px;
+
+        button {
+          padding: 6px 12px;
+          border: 1px solid #ccc;
+          background-color: #fff;
+          cursor: pointer;
+          border-radius: 6px;
+          transition: background-color 0.2s;
+
+          &.active {
+            background-color: #007bff;
+            color: #fff;
+          }
+
+          &:hover {
+            background-color: #f0f0f0;
+          }
+        }
+      }
+
+      .price {
+        font-size: 22px;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 16px;
+
+        p {
+          font-size: 14px;
+          color: #666;
+        }
+      }
+
+      // Counter mới
+      .add-to-cart {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+
+        .counter {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          background-color: #f9f9f9;
+          border-radius: 8px;
+          padding: 5px 12px;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+          button {
+            background-color: transparent;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: #007bff;
+            transition: color 0.2s;
+
+            &:hover {
+              color: #0056b3;
+            }
+
+            &:disabled {
+              color: #ccc;
+              cursor: not-allowed;
+            }
+          }
+
+          span {
+            font-size: 16px;
+            font-weight: 500;
+            min-width: 30px;
+            text-align: center;
+          }
+        }
+
+        .add-button {
+          background-color: #007bff;
+          color: #fff;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          font-size: 16px;
+          transition: background-color 0.2s;
+
+          &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+          }
+
+          &:hover {
+            background-color: #0056b3;
+          }
+        }
+      }
+    }
+  }
+
+  .product-description {
+    margin-top: 40px;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.8;
+  }
 }

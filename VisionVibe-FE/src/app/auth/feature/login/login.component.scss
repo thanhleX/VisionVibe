@@ -1,38 +1,46 @@
+.login-section {
+  background-color: #f8f9fa;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 ::placeholder {
-    font-size: 14px; 
-    color: #bfc5cb;  
-  }
+  font-size: 14px;
+  color: #bfc5cb;
+}
 
-  .divider {
-    display: flex;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .divider::before,
-  .divider::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid #000; 
-  }
-  
-  .divider::before {
-    margin-right: 10px; 
-  }
-  
-  .divider::after {
-    margin-left: 10px;
-  }
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
 
-  img{
-    max-height: 100vh;
-    object-fit: cover;
-  }
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #000;
+}
 
-  .form-control{
-    border-color: #9a9a9a;
-  }
+.divider::before {
+  margin-right: 10px;
+}
 
-  label{
-    color: #b3b3b3;
-  }
+.divider::after {
+  margin-left: 10px;
+}
+
+img {
+  max-height: 100vh;
+  object-fit: cover;
+}
+
+.form-control {
+  border-color: #9a9a9a;
+}
+
+label {
+  color: #b3b3b3;
+}

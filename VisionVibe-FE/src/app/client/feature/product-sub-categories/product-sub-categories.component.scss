@@ -17,21 +17,10 @@ img:hover {
   transform: scale(1.02);
 }
 
-.title:hover {
-  transform: scale(1.5);
-}
-
 .product-detail {
   border: 1px solid rgb(216, 216, 216);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-}
-
-.title {
-  font-size: 25px;
-  font-weight: bold;
-  position: absolute;
-  transition: transform 0.3s ease;
 }

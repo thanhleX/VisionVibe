@@ -1,9 +1,10 @@
 .product img {
-  width: 100%;
-  max-width: 100%;
-  max-height: 15vh;
-  height: 15vh;
-  object-fit: fill;
+  width: 100%;                // Chiều rộng 100% của thẻ cha
+  max-width: 100%;            // Đảm bảo không vượt quá khung chứa
+  height: 12vh;               // Giảm kích thước chiều cao ảnh
+  max-height: 12vh;           // Đảm bảo ảnh không bị kéo dài
+  object-fit: contain;        // Giữ nguyên tỷ lệ ảnh, không bị méo
+  border-radius: 8px;         // Làm tròn góc cho đẹp hơn
 }
 
 .cart {

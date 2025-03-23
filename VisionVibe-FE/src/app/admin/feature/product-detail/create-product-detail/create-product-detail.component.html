@@ -20,16 +20,15 @@
 
     <div class="mb-3">
       <label for="color">Color</label>
-      <select id="color" class="form-control" formControlName="colorId" (change)="updateSelectedColor($event)"
-        [ngStyle]="{'background-color': selectedColor}">
+      <select id="color" class="form-control" formControlName="colorId" (change)="updateSelectedColor($event)">
         <option value="">Select Color</option>
-        <option *ngFor="let color of colors" [value]="color.id" [ngStyle]="{'background-color': color.color}">&nbsp;
-        </option>
+        <option *ngFor="let color of colors" [value]="color.id">{{ color.color }}</option>
       </select>
       <div *ngIf="productDetailForm.get('colorId')?.invalid && productDetailForm.get('colorId')?.touched">
         <small class="text-danger">Color is required</small>
       </div>
     </div>
+    
 
     <div class="mb-3">
       <label for="material">Material</label>

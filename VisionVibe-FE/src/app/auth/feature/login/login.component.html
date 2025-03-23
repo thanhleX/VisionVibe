@@ -1,36 +1,40 @@
-<section class="vh-100">
+<section class="login-section">
   <div class="container h-100">
-    <div class="row d-flex align-items-center justify-content-center">
-      <div class="col-md-8 col-lg-7 col-xl-6">
-        <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/bicycle-parking-only-street-sign-3-design-template-4158efbdca3c506018e7854ffa60425f_screen.jpg?ts=1637012029"
-          class="img-fluid" alt="Phone image">
-      </div>
-      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-        <h1 style="text-align: center;">LOGIN</h1>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-          <div class="form-outline mb-4 form-floating">
-            <input type="text" id="username" formControlName="username" class="form-control form-control-lg"
-              [ngClass]="{'is-invalid': loginForm.get('username')?.invalid && loginForm.get('username')?.touched}"
-              placeholder=" " />
-            <label for="username">Username:</label>
-            <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="invalid-feedback">
-              Please enter your username
-            </div>
-          </div>
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-md-6 col-lg-5">
+        <div class="card shadow-lg border-0 rounded-4">
+          <div class="card-body p-5">
+            <h2 class="text-center mb-4 fw-bold">LOGIN FORM</h2>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <!-- Username -->
+              <div class="form-floating mb-3">
+                <input type="text" id="username" formControlName="username" class="form-control"
+                  [ngClass]="{'is-invalid': loginForm.get('username')?.invalid && loginForm.get('username')?.touched}"
+                  placeholder="Username" />
+                <label for="username">Username</label>
+                <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="invalid-feedback">
+                  Please enter your username
+                </div>
+              </div>
 
-          <div class="form-outline mb-4 form-floating">
-            <input type="password" id="password" formControlName="password" class="form-control form-control-lg"
-              [ngClass]="{'is-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}"
-              placeholder=" " />
-            <label for="password">Password:</label>
-            <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="invalid-feedback">
-              Password must be at least 6 characters long
-            </div>
+              <!-- Password -->
+              <div class="form-floating mb-3">
+                <input type="password" id="password" formControlName="password" class="form-control"
+                  [ngClass]="{'is-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}"
+                  placeholder="Password" />
+                <label for="password">Password</label>
+                <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="invalid-feedback">
+                  Password must be at least 6 characters long
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary w-100 py-2" [disabled]="loginForm.invalid">
+                Login
+              </button>
+            </form>
           </div>
-          <button type="submit" class="btn btn-primary btn-lg btn-block w-100" [disabled]="loginForm.invalid">
-            Login
-          </button>
-        </form>
+        </div>
       </div>
     </div>
   </div>

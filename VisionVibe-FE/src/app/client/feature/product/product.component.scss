@@ -1,28 +1,3 @@
-.warpper {
-  position: relative;
-}
-
-.search-bar {
-  background-color: #f8f9fa;
-  padding: 12px 24px;
-  border-bottom: 1px solid #e0e0e0;
-
-  h3 {
-    font-weight: 600;
-    font-size: 24px;
-    color: #333;
-
-    .subcategory {
-      font-weight: 700;
-      color: #ff6b6b;
-    }
-  }
-}
-
-.products {
-  margin-top: 20px;
-}
-
 .product-detail {
   border-radius: 12px;
   border: 1px solid #e0e0e0;
@@ -39,13 +14,13 @@
   // Kích thước ảnh cố định và giữ tỷ lệ
   img {
     width: 100%;               // Chiều rộng cố định 100% của thẻ cha
-    height: 300px;             // Chiều cao cố định
-    object-fit: cover;         // Giữ tỷ lệ và cắt phần thừa
-    display: block;            // Đảm bảo không bị lệch layout
+    height: 200px;             // Giảm chiều cao để ảnh không quá lớn
+    object-fit: contain;       // Hiển thị toàn bộ ảnh mà không bị cắt
+    display: block;            
     transition: transform 0.3s ease;
 
     &:hover {
-      transform: scale(1.05);  // Hiệu ứng phóng to khi hover
+      transform: scale(1.05);  
     }
   }
 

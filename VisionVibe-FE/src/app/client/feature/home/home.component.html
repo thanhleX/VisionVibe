@@ -71,7 +71,6 @@
                 <div class="col-2 ps-1 pe-1" *ngFor="let item of frameCategories">
                     <div class="frame-info">
                         <a [routerLink]="['product',item.productCategoryDto.name ,item.name]">
-                            <div class="title">{{item.name}}</div>
                             <img src={{item.thumbnailUrl}} alt="" class="frame-img">
                         </a>
                     </div>

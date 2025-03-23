@@ -1,48 +1,56 @@
 .banner-carousel {
+  background-color: #f8f8f8; // Màu nền xám nhẹ
+  padding: 10px;
+  border-radius: 8px;
+
   .carousel-indicators {
     display: none;
   }
 
   img {
-    height: 92vh;
+    height: 60vh; // Thu nhỏ kích thước ảnh
     width: 100%;
+    object-fit: contain; // Hiển thị toàn bộ hình mà không méo
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); // Hiệu ứng đổ bóng nhẹ
+    transition: transform 0.3s ease;
   }
 }
 
-.models-header {
-  height: 15vh;
-}
-
-.frames-header {
-  height: 15vh;
-}
-
+.models-header,
+.frames-header,
 .news-header {
-  height: 15vh;
-}
-
-.modelscarousel {
-  border: 1px solid red;
-  width: 100%;
-  height: 80vh;
+  height: 12vh;
 }
 
 .models-carousel {
   width: 100%;
-  height: 80vh;
-  position: relative;
+  height: 60vh; // Thu nhỏ kích thước
+  background-color: #f0f0f0;
+  padding: 5px;
+  border-radius: 8px;
   overflow: hidden;
 
-  img {
-    max-height: 80vh;
-    min-width: 100%;
-    object-fit: fill;
+  .carousel-inner {
+    .carousel-item {
+      img {
+        height: 58vh;
+        width: 100%;
+        object-fit: contain; // Đảm bảo không bị méo
+        border-radius: 8px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      img:hover {
+        transform: scale(1.02);
+        opacity: 0.9;
+      }
+    }
   }
 
-  .description {
-    position: absolute;
-    top: 10%;
-    left: 10%;
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 5%; // Giảm kích thước nút điều hướng
   }
 }
 
@@ -93,10 +101,12 @@ a {
   align-items: center;
   justify-content: center;
   position: relative;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid rgb(176, 176, 176);
   width: 100%;
   height: 30vh;
+  background-color: #f9f9f9;
+  padding: 10px;
 
   .title {
     font-size: 20px;
@@ -113,6 +123,10 @@ a {
     width: 100%;
     object-fit: cover;
     transition: opacity 0.3s ease, transform 0.3s ease;
+    height: 20vh;
+    width: 100%;
+    object-fit: contain; // Đảm bảo không méo
+    border-radius: 8px;
   }
 }
 
@@ -145,4 +159,21 @@ a {
 
 .news {
   margin-bottom: 80px;
+}
+
+.news-info {
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  background-color: #fafafa; // Màu xám nhẹ cho nền
+  width: 100%;
+  height: 40vh;
+
+  img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 30vh; // Thu nhỏ kích thước ảnh
+    width: 100%;
+    object-fit: contain; // Đảm bảo không méo
+    background-color: #f0f0f0;
+  }
 }

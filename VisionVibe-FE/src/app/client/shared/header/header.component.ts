@@ -94,4 +94,8 @@ export class HeaderComponent {
   clearCart() {
     this.cartService.clearCart();
   }
+  
+  closeSubMenu() {
+    this.activeCategoryId = null;
+  }
 }
