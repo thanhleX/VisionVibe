@@ -49,27 +49,10 @@ public class InitConfig {
     @Bean
     public ApplicationRunner applicationRunner() {
         return args -> {
-            if (isDatabaseEmpty()) {
-                initPermissions(); // Initiate permission
-                initRoles();       // Create roles and assign permissions to roles
-                initAdminAccount(); // Create admin account
-            } else {
-                log.warn("Database already initialized. Skipping initialization.");
-                initAdminAccount();
-            }
+            initPermissions(); // Initiate permission
+            initRoles();       // Create roles and assign permissions to roles
+            initAdminAccount(); // Create admin account
         };
-    }
-
-    // Check if the database is initialized
-    private boolean isDatabaseEmpty() {
-        long permissionCount = permissionRepository.count();
-        long roleCount = roleRepository.count();
-        long userCount = userRepository.count();
-
-        log.info("Current state -> Permissions: {}, Roles: {}, Users: {}", permissionCount, roleCount, userCount);
-
-        // If all are 0 -> Not initialized
-        return permissionCount == 0 && roleCount == 0 && userCount == 0;
     }
 
     // Initiate permission

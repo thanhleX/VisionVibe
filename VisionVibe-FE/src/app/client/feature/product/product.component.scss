@@ -4,23 +4,23 @@
   overflow: hidden;
   transition: transform 0.2s ease;
   background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   }
 
   // Kích thước ảnh cố định và giữ tỷ lệ
   img {
-    width: 100%;               // Chiều rộng cố định 100% của thẻ cha
-    height: 200px;             // Giảm chiều cao để ảnh không quá lớn
-    object-fit: contain;       // Hiển thị toàn bộ ảnh mà không bị cắt
-    display: block;            
+    width: 100%;          /* Chiều rộng cố định theo thẻ cha */
+    height: 250px;        /* Chiều cao lớn hơn để cân đối hơn */
+    object-fit: cover;    /* Hiển thị đầy đủ ảnh, giữ đúng tỷ lệ mà không méo */
+    display: block;
     transition: transform 0.3s ease;
 
     &:hover {
-      transform: scale(1.05);  
+      transform: scale(1.05);
     }
   }
 

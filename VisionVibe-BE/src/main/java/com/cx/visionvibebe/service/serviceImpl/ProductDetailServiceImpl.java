@@ -84,17 +84,21 @@ public class ProductDetailServiceImpl implements ProductDetailService {
     @Override
     @PreAuthorize("hasAnyRole('ADMIN','MODERATOR','SALE')")
     public ProductDetailResponse updateProductDetailById(Long id, UpdateProductDetailRequest request) throws IOException {
-        var productDetail = productDetailRepository.findById(id).orElseThrow(() -> new AppException(ErrorCode.PRODUCT_DETAIL_ID_NOT_FOUND));
+        var productDetail = productDetailRepository.findById(id)
+                .orElseThrow(() -> new AppException(ErrorCode.PRODUCT_DETAIL_ID_NOT_FOUND));
+
         productDetailMapper.updateProductDetail(request, productDetail);
 
         //add material
         if (request.getMaterialId() != null) {
-            ProductMaterial productMaterial = productMaterialRepository.findByProductMaterialId(request.getMaterialId()).orElseThrow(() -> new AppException(ErrorCode.PRODUCT_MATERIAL_ID_NOT_FOUND));
+            ProductMaterial productMaterial = productMaterialRepository.findByProductMaterialId(request.getMaterialId())
+                    .orElseThrow(() -> new AppException(ErrorCode.PRODUCT_MATERIAL_ID_NOT_FOUND));
             productDetail.setProductMaterial(productMaterial);
         }
 
         //add color
-        ProductColor productColor = productColorRepository.findByProductColorId(request.getColorId()).orElseThrow(() -> new AppException(ErrorCode.PRODUCT_COLOR_ID_NOT_FOUND));
+        ProductColor productColor = productColorRepository.findByProductColorId(request.getColorId())
+                .orElseThrow(() -> new AppException(ErrorCode.PRODUCT_COLOR_ID_NOT_FOUND));
         productDetail.setProductColor(productColor);
 
         // if material, color are same, thr error that product already existed
